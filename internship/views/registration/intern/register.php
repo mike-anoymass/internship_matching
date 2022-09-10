@@ -18,7 +18,7 @@
     <div class="layout__body">
       <h2 class="auth__tagline">Internship Matching</h2>
 
-      <form method="POST" id="intern-data">
+      <form method="POST" id="intern-data"  enctype="multipart/form-data">
 					<div class="row mt-3">
 						<div class="col-md-4">
 							<div class="form-group">
@@ -55,7 +55,7 @@
                         <div class="col-md-4">
 							<div class="form-group">
 								<label for="exampleInputEmail1">Program of Study:*</label>
-								<input type="text" name="school" class="form-control" required>
+								<input type="text" name="prg" class="form-control" required>
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -67,8 +67,14 @@
                         <div class="col-md-4">
 							<div class="form-group">
 								<label for="exampleInputPassword1">Field Of Study:*</label>
-								<input type="text" name="category" class="form-control" required>
-							</div>
+								<input type="text" name="category" class="form-control" list="topic-list" required>
+                                <datalist id="topic-list">
+                                    <select id="room_topic">
+                                        <option>Information technology</option>
+                                        <option>Information system</option>
+                                    </select>
+                                </datalist>
+                            </div>
 						</div>
                         <div class="col-md-4">
 							<div class="form-group">
@@ -109,9 +115,11 @@
 							<div class="form-group">
 								<label for="exampleInputPassword1">Upload your CV:*</label>
 								<input type="file" class="form-control" 
-                                accept=".pdf,.docx,.doc"
+                                accept=".pdf,.docx,.doc" name="cv"
                                 required>
 							</div>
+                            <input name="MAX_FILE_SIZE" type=
+                                "hidden" value="1000000">
 						</div>
 
                         

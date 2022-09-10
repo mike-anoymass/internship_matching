@@ -10,9 +10,9 @@ $(document).ready(function () {
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-               location = "/internship/views/registration/intern/intern_register.php"
+               location = "/internship/views/registration/intern/register.php"
             } else if (result.isDenied) {
-                location = "/internship/views/registration/company/employer_register.php"
+                location = "/internship/views/registration/company/register.php"
             }
           })
     })
