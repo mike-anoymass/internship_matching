@@ -32,5 +32,18 @@
                     
             return 0;
        }
+
+       protected function get($id){
+        $sql = "SELECT * from employer
+        where id=?";
+
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$id]);
+
+        if($stmt->rowCount() > 0){
+            return $stmt->fetch();
+        }
+        return false;
+    }
     }
 ?>

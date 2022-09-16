@@ -1,3 +1,16 @@
+<?php 
+    include_once "classAutoload.php";
+    Session::start();
+    if(Session::get("userVars")){
+        if(Session::get("userVars","type") === "Applicant" ){
+            header("Location: intern/");
+        }else {
+            header("Location: company/");
+        }   
+    }
+?>
+
+
 <html>
 <head>
     <link rel="stylesheet" href="../public/style.css">
@@ -17,22 +30,23 @@
     <div class="layout__body">
       <h2 class="auth__tagline">Internship Matching</h2>
 
-      <form class="form" action="" method="POST">
+      <form class="form" action="" method="POST" id="data">
         <div class="form__group form__group">
-          <label for="room_name">Email</label>
-          <input id="username" name="email" type="text" placeholder="e.g. johndoe@gmail.com" />
+          <label for="room_name">Email*</label>
+          <input name="email" type="email" placeholder="e.g. johndoe@gmail.com"  required/>
         </div>
         <div class="form__group">
-          <label for="password">Password</label>
+          <label for="password">Password*</label>
           <input
             id="password"
             name="password"
             type="password"
             placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
+            required
           />
         </div>
 
-        <button class="btn btn--main" type="submit">
+        <button class="btn btn--main" type="submit" id="login">
           <svg
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"

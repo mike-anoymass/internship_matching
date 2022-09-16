@@ -1,21 +1,26 @@
 $(document).ready(function () {
-
+    
 
     //insert Course ajax requests
     $("#btn-save").click(function (e) {
-            if ($("#company-data")[0].checkValidity()) {
+            if ($("#intern-data")[0].checkValidity()) {
                 e.preventDefault();
+
+                var data = new FormData($("#intern-data")[0])
+
                 if($("#password").val() === $("#password2").val()){
                     $.ajax({
                         url: "registerAction.php",
                         type: "POST",
-                        data: $("#company-data").serialize() + "&action=create",
+                        contentType: false,
+                        processData: false,
+                        data: data,
                         success: function (response) {
                             if(response === "1"){
                                 Swal.fire({
                                     icon: 'success',
                                     title: 'Success',
-                                    text: 'Your Company has been registered',
+                                    text: 'Applicant has been registered',
                                     showConfirmButton: false,
                                     timer: 1900
                                 })
@@ -32,7 +37,7 @@ $(document).ready(function () {
                                 })
                             }
                             
-                            $("#company-data")[0].reset();
+                            $("#intern-data")[0].reset();
                             
                         }
                     });

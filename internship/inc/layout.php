@@ -1,3 +1,8 @@
+<?php
+    include_once("classAutoload.php");
+    Session::start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,9 +68,52 @@
               <div class="col-md-12">      
                 <p class="pull-left hidden-xs"><i class="fa fa-phone"></i>Tel No. (+265) 999 785 585</p>
                 
-                <p   class="pull-right login">
-                    <a href="/internship/views/login.php"> <i class="fa fa-lock"></i> Login </a>
-                </p>
+
+                <?php
+                $notif = "1";
+                $msg = "34"; 
+                    if(!Session::get("userVars")){
+                        echo '<p   class="pull-right login">
+                            <a href="/internship/views/login.php"> <i class="fa fa-lock"></i> Login </a>
+                         </p>';
+                    }else{
+                        if(Session::get("userVars", "type") == "Applicant"){
+                            $appl = new InternView();
+                            $applicant = $appl->get(Session::get("userVars", "id"));
+
+                            if($applicant){
+                                echo ' <p class="pull-right login">
+                                <a title="View Notification(s)" href="applicant/index.php?view=notification">
+                                 <i class="fa fa-bell-o"></i> <span class="label label-success">'.$notif.'</span></a> 
+                                 | <a title="View Message(s)" href="applicant/index.php?view=message"> 
+                                 <i class="fa fa-envelope-o"></i> <span class="label label-success">'.$msg.'</span></a> 
+                                 | <a title="View Profile" href="/internship/views/intern/"> <i class="fa fa-user"></i>
+                                  Welcome, '. $applicant['firstname'] . ' '.$applicant['lastname'].' </a>
+                                   | <a href="/internship/views/logout.php"> 
+                                   <i class="fa fa-sign-out"> </i>Logout</a> </p>';
+                            }
+                           
+                        }
+                        if(Session::get("userVars", "type") == "Company"){
+                            $comp = new CompanyView();
+                            $company = $comp->get(Session::get("userVars", "id"));
+
+                            if($company){
+                                echo ' <p class="pull-right login">
+                                <a title="View Notification(s)" href="applicant/index.php?view=notification">
+                                 <i class="fa fa-bell-o"></i> <span class="label label-success">'.$notif.'</span></a> 
+                                 | <a title="View Message(s)" href="applicant/index.php?view=message"> 
+                                 <i class="fa fa-envelope-o"></i> <span class="label label-success">'.$msg.'</span></a> 
+                                 | <a title="View Profile" href="/internship/views/company/"> <i class="fa fa-user"></i>
+                                  Welcome, '. $company['name']. '</a>
+                                   | <a href="/internship/views/logout.php"> 
+                                   <i class="fa fa-sign-out"> </i>Logout</a> </p>';
+                            }
+                           
+                        }
+                    }
+                ?>
+                
 
               </div>
             </div>
@@ -125,7 +173,7 @@
             </section>';
       }
 
-       include_once "views/".$content;
+       include_once __DIR__ .$content;
 
         ?>   
  

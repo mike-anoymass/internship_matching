@@ -5,14 +5,14 @@
             $id = $this->insertUser($email, $passwd, $type);
             
             $sql = "INSERT INTO applicants
-                    (id, firstname, lastname, gender, program, graduation_year, 
-                    phone, email, field, about, cv) 
+                    (id, firstname, lastname, gender , phone, program, graduation_year, 
+                     about, email, field, cv) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
    
             $stmt = $this->connect()->prepare($sql);
  
             if($stmt->execute([$id, $fname, $lname, $gender, $phone, $prg, $year,
-             $phone, $email, $category, $bio, $cv])){
+             $bio, $email, $category, $cv])){
                 return true;
             }
  
@@ -34,6 +34,32 @@
              }
                      
              return 0;
+        }
+
+        protected function get($id){
+            $sql = "SELECT * from applicants
+            where id=?";
+
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$id]);
+
+            if($stmt->rowCount() > 0){
+                return $stmt->fetch();
+            }
+            return false;
+        }
+
+        protected function getAll(){
+            $sql = "SELECT * from applicants
+            where status=?";
+
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute(["not working"]);
+
+            if($stmt->rowCount() > 0){
+                return $stmt->fetchAll();
+            }
+            return false;
         }
     }
 ?>

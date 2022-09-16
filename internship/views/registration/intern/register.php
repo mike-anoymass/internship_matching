@@ -18,7 +18,7 @@
     <div class="layout__body">
       <h2 class="auth__tagline">Internship Matching</h2>
 
-      <form method="POST" id="intern-data"  enctype="multipart/form-data">
+      <form method="POST" id="intern-data" enctype="multipart/form-data">
 					<div class="row mt-3">
 						<div class="col-md-4">
 							<div class="form-group">
@@ -82,13 +82,18 @@
 								<textarea name="bio" class="form-control" required> </textarea>
 							</div>
 						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label for="exampleInputPassword1" required>Type:</label>
-								<input type="text" value="Intern" disabled class="form-control"
+						<input type="hidden" value="Applicant"
                                 name="type">
+                         <div class="col-md-4">
+							<div class="form-group">
+								<label for="exampleInputPassword1">Upload your CV:*</label>
+								<input type="file" name="resume"  class="form-control" 
+                                accept=".pdf,.docx,.doc" required>
 							</div>
+                            <input name="MAX_FILE_SIZE" type=
+                                "hidden" value="1000000">
 						</div>
+
 					</div>
 					<div class="row">
                     <div class="col-md-4">
@@ -111,16 +116,7 @@
 							</div>
 						</div>
 
-                        <div class="col-md-4">
-							<div class="form-group">
-								<label for="exampleInputPassword1">Upload your CV:*</label>
-								<input type="file" class="form-control" 
-                                accept=".pdf,.docx,.doc" name="cv"
-                                required>
-							</div>
-                            <input name="MAX_FILE_SIZE" type=
-                                "hidden" value="1000000">
-						</div>
+                       
 
                         
                     </div>
@@ -143,13 +139,11 @@
 </main>
 </body>
 
-<script src="../plugins/sweetalert2/dist/sweetalert2.all.min.js"></script>
-<script src="../plugins/sweetalert2/dist/sweetalert2.js"></script>
+<script src="../../../plugins/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script src="../../../plugins/sweetalert2/dist/sweetalert2.js"></script>
 
 <?php include_once "../../../inc/scripts.php" ?>
-<script src="../../../js/login.js"></script>
-
-
+<script src="../../../js/register_intern.js"></script>
 
    
     </html>

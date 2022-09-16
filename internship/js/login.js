@@ -19,7 +19,7 @@ $(document).ready(function () {
 
     //User Login ajax requests
     $('#login').click(function (e) {
-
+        
         if ($("#data")[0].checkValidity()) {
             e.preventDefault();
             $.ajax({
@@ -30,7 +30,7 @@ $(document).ready(function () {
                     if(response == ""){
 
                         Swal.fire({
-                            position: 'top-end',
+                            position: 'top-center',
                             icon: 'success',
                             title: 'Login Successful',
                             showConfirmButton: false,
@@ -44,7 +44,7 @@ $(document).ready(function () {
                         }, 2000);
                     }else{
                         Swal.fire({
-                            position: 'top-end',
+                            position: 'top-center',
                             icon: 'error',
                             title: 'Invalid User Credentials',
                             showConfirmButton: true

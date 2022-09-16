@@ -1,11 +1,11 @@
 <?php
     $title = "Home Page";
-    $content = "views/home.php";
+    $content = "/../views/home.php";
     $view = (isset($_GET['q']) && $_GET['q'] != '') ? $_GET['q'] : '';
     switch ($view) { 
         case 'apply' :
             $title="Submit Application";	
-            $content='applicationform.php';		
+            $content='/../views/applicationform.php';		
             break;
         case 'login' : 
             $title="Login";	
@@ -13,61 +13,61 @@
             break;
         case 'company' :
             $title="Company";	
-            $content='company.php';		
+            $content='/../views/company.php';		
             break;
         case 'hiring' :
             $title = isset($_GET['search']) ? 'Hiring in '.$_GET['search'] :"Hiring"; 
-            $content='hirring.php';		
+            $content='/../views/hirring.php';		
             break;		
         case 'category' :
             $title='Search for '. $_GET['search'];	
-            $content='category.php';		
+            $content='/../views/category.php';		
             break;
         case 'viewjob' :
             $title="Job Details";	
-            $content='viewjob.php';		
+            $content='/../views/viewjob.php';		
             break;
         case 'success' :
             $title="Success";	
-            $content='success.php';		
+            $content='/../views/success.php';		
             break;
         case 'register' :
             $title="Register New Member";	
-            $content='register.php';		
+            $content='/../views/register.php';		
             break;
         case 'Contact' :
             $title='Contact Us';	
-            $content='Contact.php';		
+            $content='/../views/Contact.php';		
             break;	
         case 'About' :
             $title='About Us';	
-            $content='About.php';		
+            $content='/../views/About.php';		
             break;	
         case 'advancesearch' :
             $title='Advance Search';	
-            $content='advancesearch.php';		
+            $content='/../views/advancesearch.php';		
             break;	
 
         case 'result' :
             $title='Advance Search';	
-            $content='advancesearchresult.php';		
+            $content='/../views/advancesearchresult.php';		
             break;
         case 'search-company' :
             $title='Search by Company';	
-            $content='searchbycompany.php';		
+            $content='/../views/searchbycompany.php';		
             break;	
         case 'search-function' :
             $title='Search by Function';	
-            $content='searchbyfunction.php';		
+            $content='/../views/searchbyfunction.php';		
             break;	
         case 'search-jobtitle' :
             $title='Search by Job Title';	
-            $content='searchbytitle.php';		
+            $content='/../views/searchbytitle.php';		
             break;						
         default :
             $active_home='active';
             $title="Home";	
-            $content ='home.php';		
+            $content ='/../views/home.php';		
     }
 
     include_once "inc/layout.php";
