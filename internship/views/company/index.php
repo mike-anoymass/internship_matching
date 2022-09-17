@@ -23,16 +23,16 @@ switch ($view) {
         $content ='/../views/company/profile/profile.php';
         break;
 
-	case 'notification' :
-	    $title="Profile";	
-        $_SESSION['notification']	='active' ; 
-		$content ='Profile.php';
-		break;
+    case 'jobs' :
+        $title="Vacancies";	
+        $_SESSION['jobs']	='active' ; 
+        $content ='/../views/company/profile/profile.php';
+        break;
   
-	case 'accounts' : 
-	    $title="Profile";	
-        $_SESSION['accounts']	='active' ;
-        $content ='Profile.php';
+	case 'add_vacancy' : 
+	    $title="New Vacancy";	
+        $_SESSION['jobs']	='active' ;
+        $content ='/../views/company/profile/profile.php';
 		break;
 	 
 	default : 

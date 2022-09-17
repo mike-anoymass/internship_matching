@@ -53,20 +53,15 @@
           <div class="box box-solid">  
             <div class="box-body no-padding">
               <ul class="nav nav-pills nav-stacked"> 
-              <li class="<?php echo ($view=='appliedjobs' || $view=='') ? 'active': '';?>">
-                <a href="/internship/views/intern/index.php?view=appliedjobs">
-                <i class="fa fa-list"></i> Post Job
+              <li class="<?php echo ($view=='jobs' || $view=='') ? 'active': '';?>">
+                <a href="/internship/views/company/index.php?view=jobs">
+                <i class="fa fa-list"></i> Manage Vacancies
                    </a>
-                </li>
-
-                <li class="<?php echo ($view=='accounts') ? 'active': '';?>">
-                  <a href="<?php //echo web_root.'applicant/index.php?view=accounts'; ?>">
-                  <i class="fa fa-user"></i> Posted Jobs </a>
                 </li>
 
                 <li class="<?php echo ($view=='jobseekers' || $view=='') ? 'active': '';?>">
                     <a href="/internship/views/company/index.php?view=jobseekers">
-                        <i class="fa fa-list"></i> Job Seekers
+                        <i class="fa fa-users"></i> Job Seekers
                     </a>
                 </li>
                 
@@ -114,13 +109,13 @@
     // } 
 
     switch ($view) {
-      case 'message':
+      case 'add_vacancy':
         # code...
-        require_once("message.php");
+        require_once(__DIR__."/../vacancies/new.php");
         break;
-      case 'notification':
+      case 'jobs':
         # code...
-        require_once("notification.php");
+        require_once(__DIR__."/../vacancies/index.php");
         break;
       case 'jobseekers':
         # code...

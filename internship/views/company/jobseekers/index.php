@@ -58,7 +58,7 @@
         </div>
         <!-- /.col -->
         <?php }else{
-          echo "<h1 class='text-center'>:Applicants not available</h1>";          
+          echo "<h3 class='text-center'>:Applicants not available</h3>";          
         } ?>
       </div>
       <!-- /.row -->
