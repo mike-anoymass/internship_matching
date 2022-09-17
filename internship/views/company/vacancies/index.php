@@ -8,9 +8,12 @@
     <!-- Main content -->
     <section class="content">
     <div class="box-header with-border">
-              <a class="text-bold" title="New Vacancy" href="index.php?view=add_vacancy">
-                 <i class="fa fa-plus fa-lg"></i>&nbsp; New Vacancy
-             </a>
+
+             <h4>
+                <a class="text-bold" title="New Vacancy" href="index.php?view=add_vacancy">
+                    <i class="fa fa-plus fa-lg"></i>&nbsp; New Vacancy
+                </a>
+             </h4>
                 <hr>
               <!-- /.box-tools -->
             </div>

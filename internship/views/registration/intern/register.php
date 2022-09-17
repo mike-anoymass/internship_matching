@@ -1,3 +1,10 @@
+<?php
+    require_once "classAutoload.php";
+
+    $categ = new CategoryView();
+    $categories = $categ->getAll();
+?>
+
 <html>
 <head>
     <link rel="stylesheet" href="/internship/public/style.css">
@@ -70,8 +77,13 @@
 								<input type="text" name="category" class="form-control" list="topic-list" required>
                                 <datalist id="topic-list">
                                     <select id="room_topic">
-                                        <option>Information technology</option>
-                                        <option>Information system</option>
+                                        <?php 
+                                            if ($categories) {
+                                                foreach($categories as $category){
+                                                    echo "<option>".$category['name']."</option>";
+                                                }
+                                            }
+                                        ?>
                                     </select>
                                 </datalist>
                             </div>
