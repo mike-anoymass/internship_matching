@@ -1,0 +1,30 @@
+                         
+
+1. extract the zipped folder (make sure folder name should be named internship)
+2. copy the extracted folder in www or htdocs directory of wamp64 or xampp respectively
+3. start wamp or xampp server
+4. in phpmyadmin create a database named intern_matching
+5. import tables in the database you created
+	- table/database files to be imported are located inside database folder!!!
+6. now, you are good to go ... run the system by copying the following link in ur browser
+	- localhost/internship
+7. make sure that your computer is connected to the internet when running the system
+
+
+DON'T FORGET TO CREATE A DATABASE NAMING "intern_matching" AND IMPORT THE SQL FILE TO RUN.
+WITHOUT THE DATABASE THE PROJECT WON'T RUN.
+
+>>DATABASE FILE IS INSIDE "database" FOLDER!
+
+
+
+: : : : : LOGIN DETAILS : : : : : 
+
+ADMIN PANEL LOGIN:
+
+Just register as a student or company and then login .. 
+
+/////
+its just a prototype 
+functionalities which have been done is registration and authentication and viewing intern profile
+we just want you to appreciate the interface and show progress kwa supervisor
