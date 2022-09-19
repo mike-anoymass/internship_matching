@@ -21,7 +21,7 @@
     </div>
     <div class="layout__body">
 
-      <form method="POST" id="company-data">
+      <form method="POST" id="vacancy-data">
 					<div class="row mt-3">
 						<div class="col-md-4">
 							<div class="form-group">
@@ -110,6 +110,12 @@
                     <div class="row">
                         <div class="col-md-4">
                                 <div class="form-group">
+                                    <label for="exampleInputPassword1" required>Other Information:</label>
+                                    <textarea name="info" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        <div class="col-md-4">
+                                <div class="form-group">
                                     <label for="exampleInputPassword1" required>Closing Date:*</label>
                                     <input type="text" name="date" class="form-control">
                                 </div>
@@ -119,7 +125,7 @@
 					<div class="row">
                         <div class="modal-footer">
                             <input type="submit" class="btn btn-primary px-5"
-                            name="btn_save" id="btn-save" value="Save">
+                             id="save-vacancy" value="Save">
                         </div>
                     </div>
 				</form>
@@ -127,6 +133,3 @@
   </div>
 </div>
 </main>
-
-<script src="/interships/plugins/sweetalert2/dist/sweetalert2.all.min.js"></script>
-<script src="/interships/plugins/sweetalert2/dist/sweetalert2.js"></script>

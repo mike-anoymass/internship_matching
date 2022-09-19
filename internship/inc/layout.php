@@ -24,6 +24,7 @@
 <!-- datetime picker CSS -->
 <link href="/internship/plugins/datepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 <link href="/internship/plugins/datepicker/datepicker3.css" rel="stylesheet" media="screen">
+
  
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -244,6 +245,10 @@
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster --> 
 <?php include "scripts.php" ?>
+<script src="../../plugins/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script src="../../plugins/sweetalert2/dist/sweetalert2.js"></script>
+<script src="/internship/js/all_pages.js"></script>
+
 </body>
 </html>
  

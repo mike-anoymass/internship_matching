@@ -1,7 +1,38 @@
 <?php 
     class Job extends Dbh{
+
+        protected function insert($company_id, $title, $desc, $location, $category, $type,
+         $salary, $duties, $skills, $qualifications, $closing_date, $other_info){
+            $sql = "INSERT INTO vacancies
+                    (employer, title, description, location, field, type, salary,
+                     duties, skills, qualifications, due_date, other_info) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
+   
+            $stmt = $this->connect()->prepare($sql);
+ 
+            if($stmt->execute([$company_id, $title, $desc, $location, $category, $type,
+            $salary, $duties, $skills, $qualifications, $closing_date, $other_info])){
+                return true;
+            }
+ 
+            return implode(":",  $stmt->errorInfo() );
+        }
+
+        protected function get($company_id){
+            $sql = "SELECT * FROM vacancies where employer=?";
+            $stmt = $this->connect()->prepare($sql);
+            
+            $stmt->execute([$company_id]);
+
+            if($stmt->rowCount() > 0){
+                return $stmt->fetchAll();
+            }
+
+            return false;
+        }
+
         protected function getAll(){
-            $sql = "SELECT * FROM vacancies ORDER BY id DESC";
+            $sql = "SELECT * FROM vacancies Order by id desc";
             $stmt = $this->connect()->query($sql);
 
             if($stmt->rowCount() > 0){
@@ -9,6 +40,13 @@
             }
 
             return false;
+        }
+
+        protected function delete($id){
+            $sql = "DELETE FROM vacancies WHERE id=?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$id]);
+            return "Deleting Message => ". implode(":",  $stmt->errorInfo() );
         }
 
         

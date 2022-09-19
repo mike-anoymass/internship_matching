@@ -1,6 +1,6 @@
 <?php 
     $j = new JobView();
-    $jobs = $j->getAll();
+    $jobs = $j->get(Session::get("userVars", "id"));
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -55,7 +55,7 @@
                                      href="index.php?view=edit_vacancy&id='.$job["id"].'">
                                      <i class="fa fa-edit fa-lg"></i></a>
                                      &nbsp
-                                     <a class="text-danger" title="Delete Vacancy" 
+                                     <a class="text-danger delete-vacancy" title="Delete Vacancy" 
                                      id='.$job["id"].'>
                                      <i class="fa fa-trash fa-lg"></i></a>
                                 </td>';
