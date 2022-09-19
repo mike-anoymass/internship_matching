@@ -5,7 +5,7 @@
         if(Session::get("userVars","type") === "Applicant" ){
             header("Location: intern/");
         }else {
-            header("Location: company/");
+            header("Location: company/index.php?views=jobs");
         }   
     }
 ?>

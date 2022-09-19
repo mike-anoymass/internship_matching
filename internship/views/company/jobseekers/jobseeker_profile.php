@@ -9,7 +9,13 @@
   <div class="container py-5">
     <div class="row">
         <div class="box-header with-border">
-            <h3 class="box-title">Profile</h3> 
+            <h3 class="box-title">
+                <a class="text-danger" title="Back to Vacancies" href="index.php?view=jobseekers">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                |
+                Profile
+            </h3> 
             <!-- /.box-tools -->
         </div>
     </div>

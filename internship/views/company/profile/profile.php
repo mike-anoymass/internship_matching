@@ -64,20 +64,16 @@
                         <i class="fa fa-users"></i> Job Seekers
                     </a>
                 </li>
-                
-                <li class="<?php echo ($view=='accounts') ? 'active': '';?>">
-                  <a href="<?php //echo web_root.'applicant/index.php?view=accounts'; ?>">
-                  <i class="fa fa-user"></i> Accounts </a>
-                </li>
                
                 <li class="<?php echo ($view=='message') ? 'active': '';?>"><a href="<?php //echo web_root.'applicant/index.php?view=message'; ?>"><i class="fa fa-envelope-o"></i> Messages
                   <span class="label label-success pull-right"><?php echo isset($showMsg->COUNT) ? $showMsg->COUNT : 0;?></span></a></li>
               <li class="<?php //echo ($view=='notification') ? 'active': '';?>"><a href="<?php //echo web_root.'applicant/index.php?view=notification'; ?>"><i class="fa fa-bell-o"></i> Notification
                   <span class="label label-success pull-right"><?php //echo $notif; ?></span></a></li> 
-                <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
-                 <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a> 
+
+                  <li class="<?php echo ($view=='accounts') ? 'active': '';?>">
+                  <a href="<?php //echo web_root.'applicant/index.php?view=accounts'; ?>">
+                  <i class="fa fa-user"></i> Account </a>
                 </li>
-                <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li> 
               </ul>
             </div>
             <!-- /.box-body -->
@@ -109,6 +105,11 @@
     // } 
 
     switch ($view) {
+
+     case 'view_vacancy':
+        # code...
+        require_once(__DIR__."/../vacancies/view.php");
+        break;
       case 'add_vacancy':
         # code...
         require_once(__DIR__."/../vacancies/new.php");
@@ -122,6 +123,7 @@
         # code...
         require_once(__DIR__."/../vacancies/index.php");
         break;
+
       case 'jobseekers':
         # code...
         require_once(__DIR__."/../jobseekers/index.php");
@@ -138,7 +140,7 @@
       
       default:
         # code...
-        require_once("appliedjobs.php");
+        require_once(__DIR__."/../vacancies/index.php");
         break;
     }
 ?>  
