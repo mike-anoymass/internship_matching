@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    //insert Course ajax requests
+
     $("#save-vacancy").click(function (e) {
             if ($("#vacancy-data")[0].checkValidity()) {
                 e.preventDefault();
@@ -43,6 +43,48 @@ $(document).ready(function () {
             }
     });
 
+    $("#update-vacancy").click(function (e) {
+        if ($("#vacancy-data")[0].checkValidity()) {
+            e.preventDefault();
+                $.ajax({
+                    url: "vacancies/add_edit_action.php",
+                    type: "POST",
+                    data: $("#vacancy-data").serialize() + "&action=update",
+                    success: function (response) {
+                        if(response === "1"){
+                            $("#vacancy-data")[0].reset();
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Vacancy has been updated',
+                                showConfirmButton: false,
+                                timer: 1900
+                            })
+                            setTimeout(function (){
+                                location = "index.php?view=jobs";
+                            }, 2000);
+                            
+                        }else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong!',
+                                footer: response
+                            })
+                        }
+                        
+                    }
+                });
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<code>Make Sure you complete filling the form</code>'
+              })
+        }
+});
+
     $("body").on("click", ".delete-vacancy", function (e) {
         e.preventDefault();
         let delBtnID = $(this).attr('id');
@@ -68,7 +110,7 @@ $(document).ready(function () {
                             showConfirmButton: false,
                             timer: 1900
                             })
-                            
+
                             setTimeout(function (){
                                 location = "index.php?view=jobs";
                             }, 2000); 

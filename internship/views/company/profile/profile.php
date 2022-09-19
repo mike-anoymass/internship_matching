@@ -113,6 +113,11 @@
         # code...
         require_once(__DIR__."/../vacancies/new.php");
         break;
+
+      case 'edit_vacancy':
+        # code...
+        require_once(__DIR__."/../vacancies/edit.php");
+        break;
       case 'jobs':
         # code...
         require_once(__DIR__."/../vacancies/index.php");
