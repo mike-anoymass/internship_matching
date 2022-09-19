@@ -19,29 +19,35 @@
         }
 
         protected function get($company_id){
-            $sql = "SELECT * FROM vacancies where employer=?";
+            $sql = "SELECT * FROM vacancies v
+                    Inner Join employer e on e.id=v.employer 
+                    where v.employer=?";
+
             $stmt = $this->connect()->prepare($sql);
 
             $stmt->execute([$company_id]);
 
             if($stmt->rowCount() > 0){
-                return $stmt->fetchAll();
+                return $stmt->fetchAll(PDO::FETCH_NAMED);
             }
 
             return false;
         }
 
         protected function getJob($id){
-            $sql = "SELECT * FROM vacancies where id=?";
+            $sql = "SELECT * FROM vacancies v
+                    Inner Join employer e on e.id=v.employer
+                    where v.id=?";
+
             $stmt = $this->connect()->prepare($sql);
             
             $stmt->execute([$id]);
 
             if($stmt->rowCount() > 0){
-                return $stmt->fetch();
+                return $stmt->fetch(PDO::FETCH_NAMED);
             }
 
-            return false;
+            return implode(":",$stmt->errorInfo());
         }
 
         protected function getAll(){

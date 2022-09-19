@@ -45,18 +45,18 @@
                           echo '<td class="mailbox-attachment">'.$job['location'].'</td>';
                           echo '<td class="mailbox-attachment">'.$job['field'].'</td>';
                           echo '<td class="mailbox-attachment">'.$job['due_date'].'</td>';
-                          echo '<td class="mailbox-attachment">'.$job['date'].'</td>';
+                          echo '<td class="mailbox-attachment">'.$job['date'][0].'</td>';
                           echo '<td>
                                     <a class="button" title="Explore Vacancy" 
-                                     href="index.php?view=view_vacancy&id='.$job["id"].'">
+                                     href="index.php?view=view_vacancy&id='.$job["id"][0].'">
                                      <i class="fa fa-info fa-lg"></i></a>
                                      &nbsp
                                      <a class="text-warning" title="Edit Vacancy" 
-                                     href="index.php?view=edit_vacancy&id='.$job["id"].'">
+                                     href="index.php?view=edit_vacancy&id='.$job["id"][0].'">
                                      <i class="fa fa-edit fa-lg"></i></a>
                                      &nbsp
                                      <a class="text-danger delete-vacancy" title="Delete Vacancy" 
-                                     id='.$job["id"].'>
+                                     id='.$job["id"][0].'>
                                      <i class="fa fa-trash fa-lg"></i></a>
                                 </td>';
                           echo '</tr>';
