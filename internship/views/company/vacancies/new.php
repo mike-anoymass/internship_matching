@@ -119,8 +119,14 @@
                             </div>
                         <div class="col-md-4">
                                 <div class="form-group">
+                                    <label for="exampleInputPassword1" required>Number of Employee's required:*</label>
+                                    <input type="number" name="positions" class="form-control" required>
+                                </div>
+                            </div>
+                        <div class="col-md-4">
+                                <div class="form-group">
                                     <label for="exampleInputPassword1" required>Closing Date:*</label>
-                                    <input type="text" name="date" class="form-control">
+                                    <input type="text" name="date" class="form-control" required>
                                 </div>
                             </div>
                     </div>
