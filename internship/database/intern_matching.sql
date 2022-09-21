@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 17, 2022 at 08:11 AM
+-- Generation Time: Sep 21, 2022 at 11:47 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.3.1
 
@@ -67,13 +67,21 @@ DROP TABLE IF EXISTS `applications`;
 CREATE TABLE IF NOT EXISTS `applications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `vacancy` int(11) NOT NULL,
-  `student` int(11) NOT NULL,
+  `applicant` int(11) NOT NULL,
   `date` datetime NOT NULL,
-  `status` varchar(10) NOT NULL,
+  `status` varchar(30) NOT NULL DEFAULT 'Pending',
   PRIMARY KEY (`id`),
-  KEY `application_to_student` (`student`),
+  KEY `application_to_student` (`applicant`),
   KEY `app_to_vacancy` (`vacancy`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `applications`
+--
+
+INSERT INTO `applications` (`id`, `vacancy`, `applicant`, `date`, `status`) VALUES
+(2, 9, 22, '2021-10-12 00:00:00', 'BY2929'),
+(3, 9, 23, '2012-12-20 00:00:00', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -138,6 +146,7 @@ CREATE TABLE IF NOT EXISTS `field` (
 --
 
 INSERT INTO `field` (`name`, `date`) VALUES
+('engineering', '2022-09-19 09:44:56'),
 ('Information technology', '2022-09-10 19:50:47');
 
 -- --------------------------------------------------------
@@ -219,14 +228,28 @@ CREATE TABLE IF NOT EXISTS `vacancies` (
   `duties` text NOT NULL,
   `skills` text NOT NULL,
   `qualifications` text NOT NULL,
-  `salary` int(10) DEFAULT NULL,
+  `salary` int(11) DEFAULT '0',
   `other_info` text,
   `due_date` date NOT NULL,
-  `date` year(4) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` varchar(20) NOT NULL DEFAULT 'Open',
+  `positions` int(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `vacancy_to_employer` (`employer`),
   KEY `vacancy_field` (`field`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vacancies`
+--
+
+INSERT INTO `vacancies` (`id`, `employer`, `title`, `field`, `type`, `location`, `description`, `duties`, `skills`, `qualifications`, `salary`, `other_info`, `due_date`, `date`, `status`, `positions`) VALUES
+(5, 11, 'civil engineer', 'engineering', 'Full Time', 'lilongwe', 'to build houses and stores', 'build and measure', 'build', 'degree', 150000, 'none\r\n', '2012-12-12', '2022-09-19 09:58:44', 'Open', 0),
+(7, 11, 'electric engineer', 'engineering', 'Full Time', 'lilongwe', 'check circuits', 'check cables \r\nand circuits', 'electronics', 'degree', 150000, '', '2012-12-12', '2022-09-19 11:20:11', 'Open', 0),
+(8, 11, 'gredar driver', 'engineering', 'Full Time', 'lilongwe', 'to drive vehicles', 'to drive', 'vehicles', 'diploma', 100000, 'none', '2010-10-10', '2022-09-19 12:12:58', 'Closed', 0),
+(9, 10, 'Java Developer ', 'Information technology', 'Full Time', 'lilongwe', 'to develop fast and secure java applications for both mobile and desktop', '- collect user requirements \r\n- analyze user requirements \r\n- design database and interfaces\r\n- implement systems in java ', '- JavaFx\r\n- MySql\r\n- Java Score\r\n- SQLite', 'Degree in computing', 200000, '', '2010-10-22', '2022-09-19 17:59:00', 'Open', 1),
+(10, 10, 'Systems Analyst', 'Information technology', 'Full Time', 'BT', 'to analyse our tailored systems', 'to analyse systems', 'systems analysis', 'degree in IS', 200000, '', '2011-11-11', '2022-09-20 14:36:05', 'Open', 4),
+(11, 11, 'field engineer', 'engineering', 'Full Time', 'lilongwe', 'to guide people', 'none', 'none', 'none', 0, 'none', '2012-12-12', '2022-09-21 11:01:49', 'Open', 2);
 
 --
 -- Constraints for dumped tables
@@ -244,7 +267,7 @@ ALTER TABLE `applicants`
 --
 ALTER TABLE `applications`
   ADD CONSTRAINT `app_to_vacancy` FOREIGN KEY (`vacancy`) REFERENCES `vacancies` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `application_to_student` FOREIGN KEY (`student`) REFERENCES `applicants` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `application_to_student` FOREIGN KEY (`applicant`) REFERENCES `applicants` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `attachments`
