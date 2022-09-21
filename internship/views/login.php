@@ -3,7 +3,7 @@
     Session::start();
     if(Session::get("userVars")){
         if(Session::get("userVars","type") === "Applicant" ){
-            header("Location: intern/");
+            header("Location: intern/index.php?views=appliedjobs");
         }else {
             header("Location: company/index.php?views=jobs");
         }   

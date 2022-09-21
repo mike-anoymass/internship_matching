@@ -88,7 +88,7 @@
 						<div class="col-md-4">
 							<div class="form-group">
 								<label for="exampleInputPassword1">Salary:</label>
-								<input type="text" name="salary" class="form-control" maxlength="20"
+								<input type="number" name="salary" class="form-control" maxlength="20"
                                 title="Please Enter digits" value="<?php echo $job['salary'] ?>">
 							</div>
 						</div>
@@ -135,6 +135,7 @@
                                 </datalist>
                             </div>
 						</div>
+
                         <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1" required>Closing Date:*</label>
@@ -142,6 +143,14 @@
                                     class="form-control">
                                 </div>
                         </div>
+
+                        <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1" required>Number of Employee's required:*</label>
+                                    <input type="number" name="positions" class="form-control"
+                                    value="<?php echo $job['positions']?>" required>
+                                </div>
+                            </div>
 
                         <input name="id" type="hidden" value="<?php echo $_GET['id'] ?>">
                     </div>

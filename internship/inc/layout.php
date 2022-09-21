@@ -88,7 +88,7 @@
                                  <i class="fa fa-bell-o"></i> <span class="label label-success">'.$notif.'</span></a> 
                                  | <a title="View Message(s)" href="applicant/index.php?view=message"> 
                                  <i class="fa fa-envelope-o"></i> <span class="label label-success">'.$msg.'</span></a> 
-                                 | <a title="View Profile" href="/internship/views/intern/"> <i class="fa fa-user"></i>
+                                 | <a title="View Profile" href="/internship/views/intern/index?view=appliedjobs"> <i class="fa fa-user"></i>
                                   Welcome, '. $applicant['firstname'] . ' '.$applicant['lastname'].' </a>
                                    | <a href="/internship/views/logout.php"> 
                                    <i class="fa fa-sign-out"> </i>Logout</a> </p>';

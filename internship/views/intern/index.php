@@ -12,8 +12,8 @@ $title = "Profile";
 $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
 switch ($view) { 
 	case 'appliedjobs' :
-	    $title="Profile";	
-        $_SESSION['appliedjobs']	='active' ; 
+	    $title="Applied Jobs";	
+        $_SESSION['appliedjobs'] ='active' ; 
 		$content ='/../views/intern/profile/profile.php';
 		break;
 
@@ -30,8 +30,8 @@ switch ($view) {
 		break;
 	 
 	default : 
-	    $title="Profile";	
-        $_SESSION['appliedjobs']	='active' ;
+	    $title="Applied Jobs";	
+        $_SESSION['appliedjobs'] ='active' ;
 		$content ='/../views/intern/profile/profile.php';		
 }
 

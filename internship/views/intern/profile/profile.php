@@ -19,7 +19,7 @@
   <div class="container">
       <div class="row">
           <div class="col-lg-12">
-              <h2 class="pageTitle">Profile</h2>
+              <h2 class="pageTitle"><?php echo $title ?></h2>
           </div>
       </div>
   </div>
@@ -107,7 +107,7 @@
         break;
       case 'appliedjobs':
         # code...
-        require_once("appliedjobs.php");
+        require_once(__DIR__."/../jobs/appliedjobs.php");
         break;
       case 'accounts':
         # code...

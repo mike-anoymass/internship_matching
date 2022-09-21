@@ -83,8 +83,8 @@
 						<div class="col-md-4">
 							<div class="form-group">
 								<label for="exampleInputPassword1">Salary:</label>
-								<input type="text" name="salary" class="form-control" maxlength="20"
-                                title="Please Enter digits">
+								<input type="number" name="salary" class="form-control" maxlength="20"
+                                title="Please Enter digits" value="0">
 							</div>
 						</div>
 					</div>

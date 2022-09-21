@@ -35,6 +35,23 @@
             return false;
         }
 
+        protected function getApplicationsFor($applicant_id){
+            $sql = "SELECT * FROM applications a
+                    Inner Join vacancies v on a.vacancy=v.id
+                    Inner Join employer e on e.id=v.employer
+                    where a.applicant=?";
+
+            $stmt = $this->connect()->prepare($sql);
+
+            $stmt->execute([$applicant_id]);
+
+            if($stmt->rowCount() > 0){
+                return $stmt->fetchAll(PDO::FETCH_NAMED);
+            }
+
+            return false;
+        }
+
         protected function getJob($id){
             $sql = "SELECT * FROM vacancies v
                     Inner Join employer e on e.id=v.employer

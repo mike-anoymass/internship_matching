@@ -8,8 +8,8 @@
             return parent::get($id);
         }
 
-        public function getJob($id){
-            return parent::getJob($id);
+        public function getApplicationsFor($id){
+            return parent::getApplicationsFor($id);
         }
     }
 ?>
