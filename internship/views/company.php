@@ -1,29 +1,35 @@
-
+<?php 
+    $comp = new CompanyView();
+    $companies = $comp->getAll();
+?>
     <section id="content">
-        <div class="container content">     
-        <!-- Service Blcoks -->  
-        <div class="row">
-            <?php 
-                  $sql = "SELECT * FROM `tblcompany`";
-                  $mydb->setQuery($sql);
-                  $comp = $mydb->loadResultList(); 
-
-                  foreach ($comp as $company ) { 
-            ?>
-                    <div class="col-sm-4 info-blocks">
-                        <i class="icon-info-blocks fa fa-building-o"></i>
-                        <div class="info-blocks-in">
-                            <h3><?php echo '<a href="'.web_root.'index.php?q=hiring&search='.$company->COMPANYNAME.'">'.$company->COMPANYNAME.'</a>';?></h3>
-                            <!-- <p><?php echo $company->COMPANYMISSION;?></p> -->
-                            <p>Address :<?php echo $company->COMPANYADDRESS;?></p>
-                            <p>Contact No. :<?php echo $company->COMPANYCONTACTNO;?></p>
+        <?php if($companies) { ?>
+            <div class="container content">     
+            <!-- Service Blcoks -->  
+            <div class="row">
+                <?php 
+                    foreach ($companies as $company ) { 
+                ?>
+                        <div class="col-sm-4 info-blocks">
+                            <i class="icon-info-blocks fa fa-building-o"></i>
+                            <div class="info-blocks-in">
+                                <h3>
+                                    <?php echo '<a
+                                     href="index.php?q=hiring&search='.$company['id'].'&company='.$company['name'].'">'
+                                    .$company['name'].'</a>';?>
+                                </h3>
+                                <p><?php echo $company['profile'];?></p>
+                                <p>Address :<?php echo $company['postal_address'] ?></p>
+                                <p>Email Address. :<?php echo $company['email']; ?></p>
+                                <p>Contact No. :<?php echo $company['phone']; ?></p>
+                            </div>
                         </div>
-                    </div>
 
-            <?php } ?>
+                <?php } ?>
 
- 
- 
-         </div> 
-        </div>
+    
+    
+            </div> 
+            </div>
+        <?php }else{ echo "<h3>:Companies are not available</h3>"; } ?>
     </section>

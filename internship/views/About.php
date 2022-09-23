@@ -5,14 +5,10 @@
 		<div class="container">
 			<div class="row showcase-section">
 				<div class="col-md-6">
-					<img src="img/dev1.png" alt="showcase image">
+					<img src="/internship/views/img/driving.ico" alt="showcase image">
 				</div>
 				<div class="col-md-6">
-					<div class="about-text">
-						<h3>Lorem Ipsum Dolor sit</h3>
-						<p>Sed ut perspiciaatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Vivamus suscipit tortor eget felis porttitor volutpat. Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar.</p>
-						 <p>Sed ut perspiciaatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo..</p>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -152,19 +148,9 @@
 									<!-- Team Member -->
 									<div class="team-member">
 										<!-- Image -->
-										<img class="img-responsive" src="img/team1.jpg" alt="">
-										<!-- Name -->
-										<h4>Johne Doe</h4>
-										<span class="deg">Creative</span> 
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member">
-										<!-- Image -->
 										<img class="img-responsive" src="img/team2.jpg" alt="">
 										<!-- Name -->
-										<h4>Jennifer</h4>
+										<h4>John DOe</h4>
 										<span class="deg">Programmer</span> 
 									</div>
 								</div>
@@ -174,20 +160,11 @@
 										<!-- Image -->
 										<img class="img-responsive" src="img/team3.jpg" alt="">
 										<!-- Name -->
-										<h4>Christean</h4>
+										<h4>John Doe</h4>
 										<span class="deg">CEO</span> 
 									</div>
 								</div>
-								<div class="col-md-3 col-sm-6">
-									<!-- Team Member -->
-									<div class="team-member">
-										<!-- Image -->
-										<img class="img-responsive" src="img/team4.jpg" alt="">
-										<!-- Name -->
-										<h4>Kerinele rase</h4>
-										<span class="deg">Manager</span> 
-									</div>
-								</div>
+
 							</div>
 						</div>
 						

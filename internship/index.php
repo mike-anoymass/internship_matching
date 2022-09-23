@@ -12,11 +12,11 @@
             $content='login.php';		
             break;
         case 'company' :
-            $title="Company";	
+            $title="Companies";	
             $content='/../views/company.php';		
             break;
         case 'hiring' :
-            $title = isset($_GET['search']) ? 'Hiring in '.$_GET['search'] :"Hiring"; 
+            $title = isset($_GET['search']) ? 'Hiring in '.$_GET['company'] :"Hiring"; 
             $content='/../views/hirring.php';		
             break;		
         case 'category' :

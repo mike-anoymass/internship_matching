@@ -45,5 +45,16 @@
         }
         return false;
     }
+
+    protected function getAll(){
+        $sql = "SELECT * from employer";
+
+        $stmt = $this->connect()->query($sql);
+
+        if($stmt->rowCount() > 0){
+            return $stmt->fetchAll();
+        }
+        return false;
     }
+}
 ?>

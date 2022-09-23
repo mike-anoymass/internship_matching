@@ -1,3 +1,5 @@
+
+
 <section id="banner">
    
    <!-- Slider -->
@@ -42,43 +44,12 @@
    
    
    <div class="container">
-         <div class="row">
-       <div class="col-md-12">
-         <div class="aligncenter"><h2 class="aligncenter">Company</h2><!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus ovident, doloribus omnis minus temporibus perferendis nesciunt.. --></div>
-         <br/>
-       </div>
-     </div>
-             <div class="col-sm-4 info-blocks">
-                 <i class="icon-info-blocks fa fa-building-o"></i>
-                 <div class="info-blocks-in">
-                     <h3>IT Company</h3>
-                     <!-- <p><?php echo $company->COMPANYMISSION;?></p> -->
-                     <p>Address :</p>
-                     <p>Contact No. :</p>
-                 </div>
-             </div>
- 
-  
+    <div class="row">
+    <div class="aligncenter"><h2 class="aligncenter">Companies</h2></div>
+       <?php include_once "company.php" ?>
    </div>
    </section>
-   
-   <section class="section-padding gray-bg">
-     <div class="container">
-       <div class="row">
-         <div class="col-md-12">
-           <div class="section-title text-center">
-             <h2 >Popular Jobs</h2>  
-           </div>
-         </div>
-       </div>
-       <div class="row">
-         <div class="col-md-12 ">
-          
-         </div>
-       </div>
-  
-     </div>
-   </section>    
+     
    <section id="content-3-10" class="content-block data-section nopad content-3-10">
    <div class="image-container col-sm-6 col-xs-12 pull-left">
      <div class="background-image-holder">
@@ -194,10 +165,10 @@
                      <div class="active item">
                        <blockquote><p>Lorem ipsum dolor met consectetur adipisicing. Aorem psum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met.</p></blockquote>
                        <div class="carousel-info">
-                       <img alt="" src="img/team4.jpg" class="pull-left">
+                       <img alt="" src="/internship/views/img/doe.png" class="pull-left">
                        <div class="pull-left">
-                         <span class="testimonials-name">Marc Cooper</span>
-                         <span class="testimonials-post">Technical Director</span>
+                         <span class="testimonials-name">John Doe</span>
+                         <span class="testimonials-post">Tech Lead</span>
                        </div>
                        </div>
                      </div>

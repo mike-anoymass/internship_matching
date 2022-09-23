@@ -28,6 +28,11 @@ switch ($view) {
         $_SESSION['accounts']	='active' ;
         $content ='Profile.php';
 		break;
+
+    case 'view_vacancy' : 
+        $title="Vacancy Details";	
+        $content ='/../views/intern/profile/profile.php';
+        break;
 	 
 	default : 
 	    $title="Applied Jobs";	

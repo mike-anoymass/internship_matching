@@ -114,6 +114,12 @@
         # code...
         require_once("notification.php");
         break;
+
+        case 'view_vacancy':
+            # code...
+            require_once(__DIR__."/../jobs/view_job.php");
+            break;
+
       case 'appliedjobs':
         # code...
         require_once(__DIR__."/../jobs/appliedjobs.php");
