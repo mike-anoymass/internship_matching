@@ -70,6 +70,8 @@
       <div class="auth__action">
         <p>Haven't registered yet?</p>
         <a href="#" class="btn btn--link" id="signUp">Register</a>
+        <hr>
+        <a href="/internship/" class="btn btn--link">View Site</a>
       </div>
     </div>
   </div>

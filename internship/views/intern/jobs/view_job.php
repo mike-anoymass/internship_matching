@@ -1,10 +1,9 @@
+
 <?php 
-	$j = new JobView();
-	$job = $j->getJob($_GET['id']);
 
-    $appl = new ApplicationView();
-	$applications = $appl->get($_GET['id']);
-
+    if(Session::get("userVars","type") == "Applicant"){
+        $j = new JobView();
+	    $job = $j->getJob($_GET['id']);
     
 ?> 
 <style type="text/css">
@@ -103,75 +102,8 @@
     <br>
 	
 </div>
-<?php echo (Session::get("userVars", 'type')) ?>
 
-<?php if(Session::get("userVars", 'type') == "Company") { ?>
-    
-    <div class="content-wrapper"> 
-    <!-- Main content -->
-    <section class="content">
-    <div class="box-header with-border">
-        
-        <a href=""><?php for($i=0; $i <= 100 ; $i++) echo "*"?></a>
-             <h3 class="text-center">
-                 Applicants
-             </h3>
-                <hr>
-              <!-- /.box-tools -->
-            </div>
-      <div class="row"> 
-        <!-- /.col -->
-        <?php if ($applications) {  ?>
-        <div class="col-md-12">
-          <div class="box box-primary">
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <div class="table-responsive mailbox-messages">
-                <table id="dash-table" class="table table-hover table-striped">
-                  <thead> 
-                    <tr>
-                      <th>Name</th>
-                      <th>Status</th>
-                      <th>Date Applied</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php 
-                      foreach ($applications as $application) {
-                        # code...
-                          echo '<tr>';
-                          echo '';
-                          echo '<td class="mailbox-attachment">
-                            <a href="index.php?view=explore_application&id='.$application["id"][0].'">
-                            '.$application['firstname'].' '.$application['lastname'].'
-                            </a></td>';
-                          echo '<td class="mailbox-attachment">'.$application['status'][0].'</td>';
-                          echo '<td class="mailbox-attachment">'.$application['date'][0].'</td>';
-                          echo '</a>';
-                          echo '</tr>';
-                      } 
-                    ?>
-       
-                  </tbody>
-                </table>
-                <!-- /.table -->
-              </div>
-              <!-- /.mail-box-messages -->
-            </div> 
-          </div>
-          <!-- /. box -->
-        </div>
-        <!-- /.col -->
-        <?php }else{
-          echo "<h4 class='text-center'>:You have Zero applications</h4>";          
-        } ?>
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div> 
 
-<?php } elseif(Session::get("userVars", 'type') == "Applicant") {?>
     <div class="col-sm-12 content-footer">
 <p><i class="fa fa-paperclip"></i>  Attachment Files</p>
 	<div class="col-sm-12 slider">
@@ -185,7 +117,12 @@
 		<a href="index.php?view=appliedjobs" class="btn btn-primary fa fa-arrow-left">Back</a>
 	</div> 
 </div>
-<?php } ?>
- 
 
+
+<?php } else{  ?>
+    <script type="text/javascript">
+    window.location.href = '/internship/';
+    </script>
+<?php }?>
+ 
 

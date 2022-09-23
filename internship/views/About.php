@@ -8,7 +8,7 @@
 					<img src="/internship/views/img/driving.ico" alt="showcase image">
 				</div>
 				<div class="col-md-6">
-					
+					We connect you to hiring companies
 				</div>
 			</div>
 		</div>
