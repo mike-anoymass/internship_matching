@@ -132,7 +132,7 @@
       
       default:
         # code...
-        require_once("appliedjobs.php");
+        require_once(__DIR__."/../jobs/appliedjobs.php");
         break;
     }
 ?>  
