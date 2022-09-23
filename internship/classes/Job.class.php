@@ -51,11 +51,13 @@
         }
 
         protected function getAll(){
-            $sql = "SELECT * FROM vacancies Order by id desc";
+            $sql = "SELECT * FROM vacancies v
+                    Inner Join employer e on e.id=v.employer
+                    Order by v.id desc";
             $stmt = $this->connect()->query($sql);
 
             if($stmt->rowCount() > 0){
-                return $stmt->fetchAll();
+                return $stmt->fetchAll(PDO::FETCH_NAMED);
             }
 
             return false;
