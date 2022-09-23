@@ -17,8 +17,8 @@
 
         global $contr;
 
-        $results = $contr->insert($fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
-        $email, $passwd, $cv);
+        $results = $contr->insert($fname, $lname, $gender, $phone, $prg, $year, $category, 
+        $bio, $type,$email, $passwd, $cv);
         if($results) {
            echo $results;
         }else{

@@ -32,7 +32,8 @@
            <div class="panel panel-default">            
             <div class="panel-body"> 
               <div  id="image-container">
-                <img title="profile image"  data-target="#picmodal"  data-toggle="modal"  src="<?php // echo web_root.'applicant/'.$applicant->APPLICANTPHOTO; ?>">  
+                <img title="profile image"  data-target="#picmodal"  data-toggle="modal" 
+                 src="<?php echo "pictures/".$applicant['picture'] ?>">  
               </div>
               
              </div>
@@ -169,8 +170,7 @@
                                     <h4 class="modal-title" id="myModalLabel">Choose Image.</h4>
                                 </div>
 
-                                <form action="controller.php?action=photos" enctype="multipart/form-data" method=
-                                "post">
+                                <form id="photo-data"> 
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <div class="rows">
@@ -178,9 +178,10 @@
                                                     <div class="rows">
                                                         <div class="col-md-8">
                                                           <input name="MAX_FILE_SIZE" type=
-                                                            "hidden" value="1000000"> <input id=
+                                                            "hidden" value="1000000">
+                                                             <input id=
                                                             "photo" name="photo" type=
-                                                            "file">
+                                                            "file" accept=".png,.jpg,.jpeg">
                                                         </div>
 
                                                         <div class="col-md-4"></div>
@@ -193,7 +194,7 @@
                                     <div class="modal-footer">
                                         <button class="btn btn-default" data-dismiss="modal" type=
                                         "button">Close</button> <button  class="btn btn-primary"
-                                        name="savephoto" type="submit">Upload Photo</button>
+                                        name="savephoto" type="submit" id="img-btn">Upload Photo</button>
                                     </div>
                                 </form>
                             </div><!-- /.modal-content -->

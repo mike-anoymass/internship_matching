@@ -5,5 +5,9 @@
             return parent::insert($fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
             $email, $passwd, $cv);
         }
+
+        public function uploadImage($id, $img){
+            parent::uploadImage($id, $img);
+         }
     }
 ?>

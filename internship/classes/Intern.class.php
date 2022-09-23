@@ -61,5 +61,12 @@
             }
             return false;
         }
+
+        protected function uploadImage($id, $img){
+            $sql = "UPDATE applicants SET picture=? where id=?";
+
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$img, $id]);
+        }
     }
 ?>

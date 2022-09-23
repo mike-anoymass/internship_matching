@@ -15,5 +15,6 @@
             parent::update($id, $title, $desc, $location, $category, $type,
             $salary, $duties, $skills, $qualifications, $closing_date, $other_info, $status, $positions);
          }
+
     }
 ?>

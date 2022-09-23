@@ -128,5 +128,33 @@ $(document).ready(function () {
 
     });
 
+    $("#img-btn").click(function (e) {
+        if ($("#photo-data")[0].checkValidity()) {
+            e.preventDefault();
+
+            var data = new FormData($("#photo-data")[0])
+                $.ajax({
+                    url: "profile/photoAction.php",
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (response) {
+                        $("#photo-data")[0].reset();
+                        $('#picmodal').hide();
+                        location.reload(true);
+                        
+                    }
+                });
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<code>Make Sure you complete filling the form</code>'
+              })
+        }
+});
+
 
 });
