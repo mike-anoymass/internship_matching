@@ -3,17 +3,21 @@
         protected function insert($name, $owner, $profile, $phone, $cEmail, $address, $lEmail, $password, $type){
            $id = $this->insertUser($lEmail, $password, $type);
            
-           $sql = "INSERT INTO employer
-                   (id, name, owner, profile, phone, email, postal_address) 
-                   VALUES (?, ?, ?, ?, ?, ?, ?)"; 
-  
-           $stmt = $this->connect()->prepare($sql);
+           if(is_numeric($id)){
+                $sql = "INSERT INTO employer
+                        (id, name, owner, profile, phone, email, postal_address) 
+                        VALUES (?, ?, ?, ?, ?, ?, ?)"; 
+        
+                $stmt = $this->connect()->prepare($sql);
 
-           if($stmt->execute([$id, $name, $owner, $profile, $phone, $cEmail, $address])){
-               return true;
-           }
+                if($stmt->execute([$id, $name, $owner, $profile, $phone, $cEmail, $address])){
+                    return true;
+                }
 
-           return implode(":",  $stmt->errorInfo() );
+                return implode(":",  $stmt->errorInfo() );
+            }else{
+                return $id;
+            }
        }
 
        function insertUser($lEmail, $password, $type){

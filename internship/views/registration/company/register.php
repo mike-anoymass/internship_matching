@@ -70,7 +70,7 @@
                     <div class="col-md-4">
 							<div class="form-group">
 								<label for="exampleInputEmail1">Email:*</label>
-								<input type="text" name="email" class="form-control" required>
+								<input type="email" name="email" class="form-control" required>
 							</div>
 						</div>
 						<div class="col-md-4">

@@ -141,7 +141,7 @@
                           echo '<tr>';
                           echo '';
                           echo '<td class="mailbox-attachment">
-                            <a href="index.php?view=explore_application&id='.$application["id"][0].'">
+                            <a href="index.php?view=jobseeker_profile&id='.$application["id"][1].'">
                             '.$application['firstname'].' '.$application['lastname'].'
                             </a></td>';
                           echo '<td class="mailbox-attachment">'.$application['status'][0].'</td>';

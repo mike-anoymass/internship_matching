@@ -25,6 +25,7 @@ $(document).ready(function () {
                                 setTimeout(function (){
                                     location = "/internship/views/login.php";
                                 }, 2000);
+                                $("#intern-data")[0].reset();
                                 
                             }else{
                                 Swal.fire({
@@ -35,7 +36,7 @@ $(document).ready(function () {
                                 })
                             }
                             
-                            $("#intern-data")[0].reset();
+                           
                             
                         }
                     });

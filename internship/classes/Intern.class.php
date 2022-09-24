@@ -3,20 +3,26 @@
         protected function insert($fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
         $email, $passwd, $cv){
             $id = $this->insertUser($email, $passwd, $type);
-            
-            $sql = "INSERT INTO applicants
+
+            if(is_numeric($id)){
+                $sql = "INSERT INTO applicants
                     (id, firstname, lastname, gender , phone, program, graduation_year, 
                      about, email, field, cv) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
    
-            $stmt = $this->connect()->prepare($sql);
- 
-            if($stmt->execute([$id, $fname, $lname, $gender, $phone, $prg, $year,
-             $bio, $email, $category, $cv])){
-                return true;
+                $stmt = $this->connect()->prepare($sql);
+    
+                if($stmt->execute([$id, $fname, $lname, $gender, $phone, $prg, $year,
+                $bio, $email, $category, $cv])){
+                    return true;
+                }
+                
+                return implode(":",  $stmt->errorInfo() );
+    
+            }else{
+                return $id;
             }
- 
-            return implode(":",  $stmt->errorInfo() );
+
         }
  
         function insertUser($email, $password, $type){
@@ -33,7 +39,7 @@
                  return $data['max'];
              }
                      
-             return 0;
+             return implode(":",  $stmt->errorInfo() );;
         }
 
         protected function get($id){

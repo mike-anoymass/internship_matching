@@ -60,7 +60,7 @@
         </div>
         <!-- /.col -->
         <?php }else{
-          echo "<h3 class='text-center'>:You did not apply any jobs</h3>";          
+          echo "<h3 class='text-center'>:You did not apply for any jobs</h3>";          
         } ?>
       </div>
       <!-- /.row -->
