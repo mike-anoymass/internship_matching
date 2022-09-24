@@ -14,6 +14,10 @@
                     return true;
                 }
 
+                $sql = "DELETE FROM users where id = ?";
+                $stmt2 = $this->connect()->prepare($sql);
+                $stmt2->execute([$id]);
+
                 return implode(":",  $stmt->errorInfo() );
             }else{
                 return $id;

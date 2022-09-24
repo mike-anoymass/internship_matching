@@ -3,7 +3,7 @@
         protected function insert($fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
         $email, $passwd, $cv){
             $id = $this->insertUser($email, $passwd, $type);
-
+            //echo "------" . $id . "---------";
             if(is_numeric($id)){
                 $sql = "INSERT INTO applicants
                     (id, firstname, lastname, gender , phone, program, graduation_year, 
@@ -16,7 +16,11 @@
                 $bio, $email, $category, $cv])){
                     return true;
                 }
-                
+
+                $sql = "DELETE FROM users where id = ?";
+                $stmt2 = $this->connect()->prepare($sql);
+                $stmt2->execute([$id]);
+
                 return implode(":",  $stmt->errorInfo() );
     
             }else{
