@@ -8,6 +8,7 @@
 
     function editImage()
     {
+        deleteExistingImage();
         $img = UploadImage();
 
         $contr = new InternContr();
@@ -25,6 +26,17 @@
 
     }
 
+    function deleteExistingImage(){
+        $view = new InternView();
+        $intern = $view->get(Session::get("userVars", "id"));
+        $img = $intern['picture'];
+
+        if($img){
+            $file_to_delete ='../../intern/pictures/'.$img;
+            unlink($file_to_delete);
+        }
+    }
+
     function UploadImage(){
             $target_dir = "../../intern/pictures/";
             $target_file = $target_dir . date("dmYhis") . basename($_FILES["photo"]["name"]);
@@ -38,6 +50,5 @@
                 // redirect(web_root."index.php?q=apply&job=".$jobid."&view=personalinfo");
                 // exit;
             }
-       
     } 
 ?>

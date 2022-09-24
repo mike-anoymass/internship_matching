@@ -17,16 +17,20 @@
 
         global $contr;
 
-        $results = $contr->insert($fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
-        $email, $passwd, $cv);
-        
-        if($results) {
-           echo $results;
-        }else{
-            echo '<div class="alert alert-danger alert-dismissible">
-                        <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' .
-                $results . '</div>';
+        if($cv != "error"){
+            $results = $contr->insert($fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
+            $email, $passwd, $cv);
+            
+            if($results) {
+            echo $results;
+            }else{
+                echo '<div class="alert alert-danger alert-dismissible">
+                            <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' .
+                    $results . '</div>';
+            }
         }
+
+        
 
 
     }
@@ -63,7 +67,8 @@
             if (move_uploaded_file($_FILES["resume"]["tmp_name"], $target_file)) {
                 return  date("dmYhis") . basename($_FILES["resume"]["name"]);
             }else{
-                echo "Error Uploading File" . "error";
+                echo "Error Uploading File" . "=> File is too large.. file size should be less than 2MB";
+                return "error";
                 // redirect(web_root."index.php?q=apply&job=".$jobid."&view=personalinfo");
                 // exit;
             }

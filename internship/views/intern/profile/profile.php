@@ -11,6 +11,15 @@
       width: 100%;
       height: 50%;
     }
+    .circular--square {
+        border-top-left-radius: 50% 50%;
+        border-top-right-radius: 50% 50%;
+        border-bottom-right-radius: 50% 50%;
+        border-bottom-left-radius: 50% 50%;
+        width: 500px;
+        height: 60px;
+    }
+
     .panel-body img:hover{
       cursor: pointer;
     }
@@ -31,9 +40,9 @@
     <div class="col-sm-3"><!--left col-->
            <div class="panel panel-default">            
             <div class="panel-body"> 
-              <div  id="image-container">
-                <img title="profile image"  data-target="#picmodal"  data-toggle="modal" 
-                 src="<?php echo "pictures/".$applicant['picture'] ?>">  
+              <div  id="image-container">   
+                <img title="profile image" data-target="#picmodal"  data-toggle="modal" class="circular--square"
+                src="<?php echo "pictures/".$applicant['picture'] ?>">  
               </div>
               
              </div>

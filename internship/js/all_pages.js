@@ -140,6 +140,7 @@ $(document).ready(function () {
                     processData: false,
                     data: data,
                     success: function (response) {
+                        alert(response)
                         $("#photo-data")[0].reset();
                         $('#picmodal').hide();
                         location.reload(true);
