@@ -7,6 +7,16 @@
         $job = new JobView();
         $jobs = $job->get($company_id);
     }
+
+    if(isset($_GET['applicant'])){
+        $appli = new InternView;
+        $applica = $appli->get($_GET['applicant']);
+
+        $job = new JobView();
+        $jobs = $job->getJobForThisCategory($applica['field']);
+    }
+
+
 ?>
 <section id="content">
    
@@ -42,7 +52,7 @@
         </table>
     <?php
         }else{
-            echo "<h4>:Applications are not available</h4>";
+            echo "<h4>:Vacancies are not available</h4>";
         }
     ?>    
         

@@ -13,5 +13,9 @@
         public function uploadDoc($id, $name, $document){
             return parent::uploadDoc($id, $name, $document);
         }
+
+        public function deleteAttachment($id){
+            parent::deleteAttachment($id);
+        }
     }
 ?>

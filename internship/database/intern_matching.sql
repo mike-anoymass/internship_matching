@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 27, 2022 at 11:11 AM
--- Server version: 5.7.19
--- PHP Version: 5.6.31
+-- Generation Time: Sep 27, 2022 at 09:23 PM
+-- Server version: 5.7.36
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -54,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `applicants` (
 
 INSERT INTO `applicants` (`id`, `firstname`, `lastname`, `gender`, `program`, `graduation_year`, `phone`, `email`, `about`, `cv`, `date`, `status`, `picture`, `field`) VALUES
 (21, 'davies', 'mhango', 'Male', 'Management Information Systems', 2014, 883844848, 'davies@gmail.com', ' I am an experinced front end developer and Im proficient with ReaxtJs, VueJs and Angular.', '11092022054036data dictionary.pdf', '2022-09-11 07:40:37', 'not working', '23092022125437+265 884 79 92 03 20210507_043151.jpg', 'Information technology'),
-(23, 'stella Claire', 'banda', 'Female', 'Business Communication', 2022, 993949494, 'stella@gmail.com', 'i am an experience entreprenuer with atleast 3 years in this field ', '16092022104359REASEARCH PROPOSAL BRITNEY LUNDUKA BIS-17-SS-019.pdf', '2022-09-16 12:43:59', 'not working', '23092022121221265881571588_status_fab14093610d45f98b4354880d5b0b03.jpg', 'Information technology'),
+(23, 'stella Claire', 'banda', 'Female', 'Business Communication', 2022, 993949494, 'stella@gmail.com', 'i am an experience entreprenuer with atleast 3 years in this field ', '16092022104359REASEARCH PROPOSAL BRITNEY LUNDUKA BIS-17-SS-019.pdf', '2022-09-16 12:43:59', 'not working', '27092022012637149071.png', 'engineering'),
 (56, 'Mirriam ', 'Mhango', 'Female', 'business communication', 2020, 983000041, 'mirrie@gmail.com', 'I am a hardworking young girl. Seeking to grow my career in this field ', '24092022105958meeting invite.pdf', '2022-09-24 12:59:58', 'not working', NULL, 'education'),
 (60, 'mike', 'mhango', 'Male', 'ddkdk', 3373, 888119888, 'mikelibamba@gmail.com', 'ddkdkdk ', '24092022121047REASEARCH PROPOSAL BRITNEY LUNDUKA BIS-17-SS-019.pdf', '2022-09-24 14:10:47', 'not working', NULL, 'commerce'),
 (61, 'Noel', 'Phiri', 'Male', 'mathematical sciences', 2021, 995599595, 'noel@gmail.com', 'I like statistics ', '26092022091526Web-Developer.pdf', '2022-09-26 11:15:26', 'not working', '260920221030123913+2659963520180623_030653.jpg', 'education');
@@ -77,14 +76,16 @@ CREATE TABLE IF NOT EXISTS `applications` (
   PRIMARY KEY (`id`),
   KEY `application_to_student` (`applicant`),
   KEY `app_to_vacancy` (`vacancy`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `applications`
 --
 
 INSERT INTO `applications` (`id`, `vacancy`, `applicant`, `date`, `status`, `cv`, `date_responded`) VALUES
-(3, 9, 23, '2012-12-20 00:00:00', 'Pending', '0', NULL);
+(9, 5, 61, '2022-09-27 21:37:32', 'Pending', '27092022073732datadictionary.pdf', NULL),
+(10, 5, 23, '2022-09-27 23:01:05', 'Pending', '27092022090105Web-Developer.pdf', NULL),
+(12, 9, 61, '2022-09-27 23:16:26', 'Pending', '27092022091626meetinginvite.pdf', NULL);
 
 -- --------------------------------------------------------
 
@@ -100,18 +101,15 @@ CREATE TABLE IF NOT EXISTS `attachments` (
   `applicant` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`),
   KEY `attachment_applicant` (`applicant`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `attachments`
 --
 
 INSERT INTO `attachments` (`id`, `name`, `document`, `applicant`, `date`) VALUES
-(8, 'Bachelors Degree', '26092022102021Degree_MikeMLibamba.pdf', 61, '2022-09-26 12:20:21'),
-(9, 'Academic Transcript', '26092022102118AcademicTranscript_MikeMLibamba.pdf', 61, '2022-09-26 12:21:18'),
-(10, 'MSCE Certificate', '26092022102142MSCECertificate_MikeMLibamba.pdf', 61, '2022-09-26 12:21:42');
+(18, 'degree', '27092022073548Web-Developer.pdf', 61, '2022-09-27 21:35:48');
 
 -- --------------------------------------------------------
 

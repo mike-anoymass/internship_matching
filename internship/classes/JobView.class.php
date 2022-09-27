@@ -11,5 +11,9 @@
         public function getJob($id){
             return parent::getJob($id);
         }
+
+        public function getJobForThisCategory($field){
+           return parent::getJobForThisCategory($field);
+        }
     }
 ?>

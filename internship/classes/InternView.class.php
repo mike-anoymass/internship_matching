@@ -11,5 +11,9 @@
         public function getAttachments($id){
             return parent::getAttachments($id);
         }
+
+        public function getAttachment($id){
+            return parent::getAttachment($id);
+        }
     }
 ?>

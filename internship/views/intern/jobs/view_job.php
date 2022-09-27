@@ -110,8 +110,7 @@
 
 
     <?php 
-        if($job['status'] == "Open"){
-            if (!$applc){
+            if (!$applc && $job['status'] == "Open"){
     ?>
         <div class="col-sm-12 content-footer">
 
@@ -122,18 +121,19 @@
         
     </div>
 
-    <?php }else{ ?>
+    <?php }elseif($applc){ ?>
 
         <div class="col-sm-12 content-footer">
         <h4>You applied for this Job</h4>
         <div class="col-sm-12 slider">
             <h5>Download your Resume <a href="/internship/views/intern/cvs/<?php echo $applc['cv'] ?>">Here</a></h5>
+            <h5>Status: <?php echo $applc['status'] ?></h5>
             <h5>Delete your application
             <i id="<?php echo $applc['id'] ?>" class="fa fa-trash fa-lg del-application" style="color: red;"></i></h5>
         </div>
         </div>  
 
-    <?php } }?>
+    <?php }?>
 
         <div class="col-sm-12  submitbutton "> 
             <a href="index.php?view=appliedjobs" class="btn btn-primary fa fa-arrow-left">Back</a>

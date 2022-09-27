@@ -85,6 +85,22 @@
             return "Deleting Message => ". implode(":",  $stmt->errorInfo() );
         }
 
-        
+        protected function getJobForThisCategory($field){
+            $sql = "SELECT * FROM vacancies v
+            Inner Join employer e on e.id=v.employer 
+            where v.field=?";
+
+            $stmt = $this->connect()->prepare($sql);
+            
+
+            $stmt->execute([$field]);
+
+            if($stmt->rowCount() > 0){
+                return $stmt->fetchAll(PDO::FETCH_NAMED);
+            }
+
+            return false;
+        }
+
     }
 ?>

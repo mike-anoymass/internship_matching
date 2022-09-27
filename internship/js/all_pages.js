@@ -290,4 +290,49 @@ $(document).ready(function () {
     });
 
 
+
+    $("body").on("click", ".delete-attachment", function (e) {
+
+        let delBtnID = $(this).attr('id');
+        //alert(delBtnID)
+
+        Swal.fire({
+            icon: 'warning',
+            title: 'Do you want to delete this Document?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: `No`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "profile/deleteAttachment.php",
+                    type: "POST",
+                    data: {delBtnID:delBtnID},
+                    success: function (response) {
+                        Swal.fire({
+                            icon: 'success',
+                            title:'Delete Successful',
+                            showConfirmButton: false,
+                            timer: 1900
+                            })
+
+                            setTimeout(function (){
+                                location.reload();
+                            }, 2000); 
+                    }
+                });
+            } else if (result.isDenied) {
+              Swal.fire({
+                icon: 'warning',
+                title:'Delete Cancelled',
+                showConfirmButton: false,
+                timer: 1900
+                })
+            }
+          })
+
+    });
+
 });

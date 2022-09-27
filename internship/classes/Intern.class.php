@@ -106,6 +106,27 @@
             return false;
         }
 
+        protected function getAttachment($id){
+            $sql = "SELECT * from attachments
+            where id=?";
+
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$id]);
+
+            if($stmt->rowCount() > 0){
+                return $stmt->fetch();
+            }
+            return false;
+        }
+
+
+        protected function deleteAttachment($id){
+            $sql = "DELETE FROM attachments where id=?";
+
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$id]);
+        }
+
         
     }
 ?>

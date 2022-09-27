@@ -2,6 +2,7 @@
     $view = isset($_GET['view']) ? $_GET['view'] :"";  
 	  $appl = new InternView();
 	  $applicant = $appl->get(Session::get("userVars", "id"));
+      $attachments = $appl->getAttachments(Session::get("userVars", "id"));
   ?>
   <style type="text/css">
 /*    #image-container {
@@ -74,8 +75,8 @@
                     </a>
                 </li>
                 <li class="<?php echo ($view=='accounts') ? 'active': '';?>">
-                    <a href="<?php //echo web_root.'applicant/index.php?view=accounts'; ?>">
-                    <i class="fa fa-building"></i> Suggested for You </a>
+                        <?php echo '<a href="/internship/index.php?q=hiring&applicant='.$applicant['id'].'">   
+                            <i class="fa fa-building"></i> Suggested for You </a>'?>
                   </li>
                   <li class="<?php echo ($view=='accounts') ? 'active': '';?>">
                     <a href="<?php //echo web_root.'applicant/index.php?view=accounts'; ?>">
@@ -252,7 +253,8 @@
                                 
                                         </div>
                                     </div>
-
+                                    <input type="submit" id="doc-btn" class="btn btn-primary btn-block"
+                                        value="Upload Document">
                                 </form>
                     </section>
                 </div>
@@ -263,6 +265,30 @@
                 <div class="panel panel-default" style="margin-top:6px">
 
                     <section class="panel-body">
+                        <?php if($attachments) {
+                            foreach($attachments as $doc){ 
+                            ?>
+
+                            <p>
+                                <?php 
+                                    echo "<a href='/internship/views/intern/documents/$doc[document] '>". 
+                                    $doc['name'] .
+                                    "</a>"
+                                 ?>
+                                &nbsp;&nbsp;
+                                 <a id="<?php echo $doc['id'] ?>" title="Delete" class="delete-attachment">
+                                    <i class="fa fa-trash" style="color:red"></i>
+                                </a>
+                        
+                            </p>
+
+
+                        <?php     
+                            }} else{
+
+                            echo "<h4>:Attachments not available</h4>";
+                            
+                        }?>
 
                     </section>
                 </div>
@@ -270,13 +296,7 @@
             </div>
         </div>
 
-        <section style="display:inline;">
-
-            <input type="submit" id="doc-btn" class="btn btn-primary btn-block"
-                   value="Upload Document">
-            </form>
-
-        </section>
+        
 
     </div>
 
