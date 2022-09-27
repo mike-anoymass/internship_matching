@@ -3,6 +3,9 @@
         $id = $_GET['id'];
         $appl = new InternView();
         $applicant = $appl->get($id);
+
+
+        $attachments = $appl->getAttachments($id);
 ?> 
 
 <section style="background-color: white;">
@@ -40,31 +43,34 @@
                 <p class="mb-4"><span class="text-primary font-italic me-1">Resumes & Certificates</span>
                  |Attachments
                 </p>
-                <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                <div class="progress rounded mb-2" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+
+                <p class="mb-1" style="font-size: .99rem;">Curriculum Vitae</p>
+                <a href=<?php echo "/internship/views/intern/cvs/".$applicant['cv'] ?> >
+                    <div class="progress rounded" style="height: 5px;">
+                        <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="80"
+                            aria-valuemin="0" aria-valuemax="100">Open</div>
+                    </div>
+                </a>
+                       
+                <?php
+                    if($attachments){
+                        foreach($attachments as $attach){
+                    ?>
+                        <p class="mb-1" style="font-size: .99rem;"><?php echo $attach['name'] ?></p>
+                        <a href=<?php echo "/internship/views/intern/documents/".$attach['document'] ?> >
+                            <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="80"
+                                    aria-valuemin="0" aria-valuemax="100">Open</div>
+                            </div>
+                        </a>
+
+                <?php   
+                     }
+                    }else{
+                        echo "<p>: Other Attachments Not Found</p>";
+                    }
+                ?>
+               
               </div>
             </div>
         

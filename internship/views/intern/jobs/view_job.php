@@ -4,6 +4,9 @@
     if(Session::get("userVars","type") == "Applicant"){
         $j = new JobView();
 	    $job = $j->getJob($_GET['id']);
+
+        $app = new ApplicationView();
+        $applc = $app->getApplication($_GET['id'], Session::get("userVars", "id"));
     
 ?> 
 <style type="text/css">
@@ -104,26 +107,111 @@
 </div>
 
 
-<?php 
-    if($job['status'] == "Open"){
-?>
-    <div class="col-sm-12 content-footer">
 
-	<div class="col-sm-12 slider">
-		 <h3>Apply <a href="#">Here</a></h3>
-	</div>  
-	<div class="col-sm-12  submitbutton "> 
-		<a href="index.php?view=appliedjobs" class="btn btn-primary fa fa-arrow-left">Back</a>
-	</div> 
-</div>
 
-<?php }?>
+    <?php 
+        if($job['status'] == "Open"){
+            if (!$applc){
+    ?>
+        <div class="col-sm-12 content-footer">
 
+            <div class="col-sm-12 slider">
+                <h3>Apply <a href="#" data-target="#attachcv"  data-toggle="modal" >Here</a></h3>
+            </div>
+        </div>  
+        
+    </div>
+
+    <?php }else{ ?>
+
+        <div class="col-sm-12 content-footer">
+        <h4>You applied for this Job</h4>
+        <div class="col-sm-12 slider">
+            <h5>Download your Resume <a href="/internship/views/intern/cvs/<?php echo $applc['cv'] ?>">Here</a></h5>
+            <h5>Delete your application
+            <i id="<?php echo $applc['id'] ?>" class="fa fa-trash fa-lg del-application" style="color: red;"></i></h5>
+        </div>
+        </div>  
+
+    <?php } }?>
+
+        <div class="col-sm-12  submitbutton "> 
+            <a href="index.php?view=appliedjobs" class="btn btn-primary fa fa-arrow-left">Back</a>
+        </div> 
 
 <?php } else{  ?>
     <script type="text/javascript">
     window.location.href = '/internship/';
     </script>
 <?php }?>
- 
+
+
+<div class="modal fade" id="attachcv">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h3 class="text-center">Resume for this Vacancy
+                    <span type="button" class="close fa fa-close" data-dismiss="modal"></span>
+                </h3>
+            </div>
+
+    <!-- Modal body -->
+    <div class="modal-body">
+        <ul class="nav nav-tabs">
+            <li class="nav-link active"><a data-toggle="tab" href="#attach">
+                    <b>Resume</b></a></li>
+
+        </ul>
+
+        <div class="tab-content">
+            <div id="attachcv" class="tab-pane active">
+                <div class="panel panel-default" style="margin-top:6px">
+                    <section class="panel-body">
+                              <form id="resume-data" action="" method="POST"> 
+                                    <div class="modal-body">
+                                            <div class="rows">
+                                                <div class="col-md-12">
+                                                    <div class="rows">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputPassword1">Attach Here:*</label>
+                                                            <input name="resume" type="file" required
+                                                             accept=".pdf, .docx, .doc" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <input type="hidden" name="vacancy"
+                                                     value="<?php echo $_GET['id']; ?>">
+
+                                                     <input type="hidden" name="applicant"
+                                                     value="<?php echo Session::get("userVars","id"); ?>">
+                                                
+                                                </div>
+                                            </div>
+                                
+                                        </div>
+                                    </div>
+                                
+                    </section>
+                </div>
+
+            </div>
+        </div>
+
+        <section style="display:inline;">
+
+            <input type="submit" id="resume-btn" class="btn btn-primary btn-block"
+                   value="Upload Resume">
+        </section>
+
+        </form>
+
+    </div>
+
+</div>
+</div>
+</div>
+
 

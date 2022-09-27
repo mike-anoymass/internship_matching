@@ -7,5 +7,9 @@
         public function getAll(){
             return parent::getAll();
         }
+
+        public function getAttachments($id){
+            return parent::getAttachments($id);
+        }
     }
 ?>

@@ -1,19 +1,21 @@
 <?php
     require_once "classAutoload.php";
-    Session::start();
 
     if (isset($_POST) && isset($_FILES)) {
-        editImage();
+        attach();
     }
 
-    function editImage()
+    function attach()
     {
-        deleteExistingImage();
-        $img = UploadImage();
+        //deleteExistingImage();
+        $document = UploadDoc();
 
-        $contr = new InternContr();
+        $contr = new ApplicationContr();
 
-        $results = $contr->uploadImage(Session::get("userVars", "id"), $img);
+        $vacancy = $_POST['vacancy'];
+        $applicant = $_POST['applicant'];
+
+        $results = $contr->insert($vacancy, $applicant, $document);
 
         if($results) {
            echo $results;
@@ -37,14 +39,13 @@
         }
     }
 
-    function UploadImage(){
-            $target_dir = "../../intern/pictures/";
-            $filename = str_replace(' ', '', $_FILES["photo"]["name"]);
+    function UploadDoc(){
+            $target_dir = "../../intern/cvs/";
+            $filename = str_replace(' ', '', $_FILES["resume"]["name"]);
             $target_file = $target_dir . date("dmYhis") . basename($filename);
-            $uploadOk = 1;
             $fileType = pathinfo($target_file,PATHINFO_EXTENSION);
             
-            if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
+            if (move_uploaded_file($_FILES["resume"]["tmp_name"], $target_file)) {
                 return  date("dmYhis") . basename($filename);
             }else{
                 echo "Error Uploading File" . "=> Upload a file less than 2MB";

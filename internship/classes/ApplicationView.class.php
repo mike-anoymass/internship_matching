@@ -1,7 +1,11 @@
 <?php
     class ApplicationView extends Application{
-        public function getAll(){
-            return parent::getAll();
+        public function getApplication($v_id, $a_id){
+            return parent::getApplication($v_id, $a_id);
+        }
+
+        public function getApplicationOnce($id){
+            return parent::getApplicationOnce($id);
         }
 
         public function get($id){

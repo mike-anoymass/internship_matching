@@ -42,7 +42,7 @@
                           echo '<td class="mailbox-attachment">'.$application['date'][0].'</td>';
                           echo '<td>
                                     <a class="button"
-                                     href="index.php?view=application&id='.$application["id"][0].'">
+                                     href="index.php?view=view_vacancy&id='.$application["id"][1].'">
                                      See Details</a>
                                 </td>';
                           echo '</tr>';

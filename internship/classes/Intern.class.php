@@ -3,7 +3,6 @@
         protected function insert($fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
         $email, $passwd, $cv){
             $id = $this->insertUser($email, $passwd, $type);
-            //echo "------" . $id . "---------";
             if(is_numeric($id)){
                 $sql = "INSERT INTO applicants
                     (id, firstname, lastname, gender , phone, program, graduation_year, 
@@ -78,5 +77,35 @@
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute([$img, $id]);
         }
+
+        protected function uploadDoc($id, $name, $document){
+            $sql = "INSERT INTO attachments
+                    (applicant, name, document) 
+                    VALUES (?, ?, ?)"; 
+   
+                $stmt = $this->connect()->prepare($sql);
+    
+                if($stmt->execute([$id, $name, $document])){
+                    return true;
+                }
+
+                return implode(":",  $stmt->errorInfo() );
+        }
+
+
+        protected function getAttachments($id){
+            $sql = "SELECT * from attachments
+            where applicant=?";
+
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$id]);
+
+            if($stmt->rowCount() > 0){
+                return $stmt->fetchAll();
+            }
+            return false;
+        }
+
+        
     }
 ?>

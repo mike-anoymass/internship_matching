@@ -68,6 +68,11 @@
                     <i class="fa fa-list"></i> Applied Jobs
                     </a>
                 </li>
+                <li>
+                    <a href="" data-target="#attach"  data-toggle="modal">
+                    <i class="fa fa-file"></i> Attachments
+                    </a>
+                </li>
                 <li class="<?php echo ($view=='accounts') ? 'active': '';?>">
                     <a href="<?php //echo web_root.'applicant/index.php?view=accounts'; ?>">
                     <i class="fa fa-building"></i> Suggested for You </a>
@@ -80,11 +85,14 @@
                 <li class="<?php echo ($view=='message') ? 'active': '';?>">
                     <a href="<?php //echo web_root.'applicant/index.php?view=message'; ?>">
                     <i class="fa fa-envelope-o"></i> Messages
-                  <span class="label label-success pull-right"><?php echo isset($showMsg->COUNT) ? $showMsg->COUNT : 0;?></span></a></li>
+                  <span class="label label-success pull-right">
+                    <?php echo isset($showMsg->COUNT) ? $showMsg->COUNT : 0;?></span></a></li>
               <li class="<?php //echo ($view=='notification') ? 'active': '';?>">
                 <a href="<?php //echo web_root.'applicant/index.php?view=notification'; ?>">
                 <i class="fa fa-bell-o"></i> Notification
-                  <span class="label label-success pull-right"><?php //echo $notif; ?></span></a></li> 
+                  <span class="label label-success pull-right"><?php //echo $notif; ?></span></a>
+                </li> 
+              </ul>
                
             </div>
             <!-- /.box-body -->
@@ -95,11 +103,7 @@
           
         </div> 
         <div class="col-sm-9">
-        <?php
-       // check_message();  
-       // check_active(); 
-            
-        ?>
+
 
           <!-- <h1></h1> -->
 <?php 
@@ -145,67 +149,138 @@
         break;
     }
 ?>  
-         <!--   <ul class="nav nav-tabs" id="myTab">
-        <li class="<?php //echo  $_SESSION['appliedjobs']; ?>"><a href="<?php //echo web_root.'applicant/index.php?view=appliedjobs'; ?>" >Applied Jobs</a></li> 
-        <li class="<?php //echo  $_SESSION['accounts'];  ?>"><a href="<?php // echo web_root.'applicant/index.php?view=accounts'; ?>" >Accounts</a></li> 
-      </ul>
-          
-      <div class="tab-content bottomline">
-         
-         <div class="tab-pane <?php //echo $_SESSION['appliedjobs']; ?>" id="appliedjobs"><br/>  
-         </div>
-           <div class="tab-pane <?php //echo $_SESSION['accounts']; ?>" id="accounts"><br/>  
-          </div> 
-
-        </div> -->    
         </div><!--/col-sm-9-->
     </div><!--/row-->
+</div>
 
-  </div><!--/contanier--> 
-
-   <?php  
-    //unset($_SESSION['appliedjobs']);
-   // unset($_SESSION['accounts']); 
-     ?>
  
-         <!-- Modal -->
-                    <div class="modal fade" id="picmodal" tabindex="-1">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button class="close" data-dismiss="modal" type=
-                                    "button">×</button>
+<!-- upload photo Modal -->
+<div class="modal fade" id="picmodal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" type=
+                "button">×</button>
 
-                                    <h4 class="modal-title" id="myModalLabel">Choose Image.</h4>
+                <h4 class="modal-title" id="myModalLabel">Choose Image.</h4>
+            </div>
+
+            <form id="photo-data"> 
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="rows">
+                            <div class="col-md-12">
+                                <div class="rows">
+                                    <div class="col-md-8">
+                                        <input name="MAX_FILE_SIZE" type=
+                                        "hidden" value="1000000">
+                                            <input id=
+                                        "photo" name="photo" type=
+                                        "file" accept=".png,.jpg,.jpeg">
+                                    </div>
+
+                                    <div class="col-md-4"></div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                <form id="photo-data"> 
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" type=
+                    "button">Close</button> <button  class="btn btn-primary"
+                    name="savephoto" type="submit" id="img-btn">Upload Photo</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<!-- upload document Modal -->
+<div class="modal fade" id="attach">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h3 class="text-center">Manage Attachments
+                    <span type="button" class="close fa fa-close" data-dismiss="modal"></span>
+                </h3>
+            </div>
+
+    <!-- Modal body -->
+    <div class="modal-body">
+        <ul class="nav nav-tabs">
+            <li class="nav-link active"><a data-toggle="tab" href="#attachdoc">
+                    <b>Attach File</b></a></li>
+            <li class="nav-link"><a data-toggle="tab" href="#attachments">
+                    <b>Attachments</b></a></li>
+
+        </ul>
+
+        <div class="tab-content">
+            <div id="attachdoc" class="tab-pane active">
+                <div class="panel panel-default" style="margin-top:6px">
+
+                    <section class="panel-body">
+                        <form id="document-data">
+
+                              <form id="document-data"> 
                                     <div class="modal-body">
-                                        <div class="form-group">
                                             <div class="rows">
                                                 <div class="col-md-12">
                                                     <div class="rows">
-                                                        <div class="col-md-8">
-                                                          <input name="MAX_FILE_SIZE" type=
-                                                            "hidden" value="1000000">
-                                                             <input id=
-                                                            "photo" name="photo" type=
-                                                            "file" accept=".png,.jpg,.jpeg">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputPassword1">Document Name:*</label>
+                                                            <input name="name" type="text" class="form-control" required>
                                                         </div>
-
-                                                        <div class="col-md-4"></div>
                                                     </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputPassword1">Attach Here:*</label>
+                                                            <input id= "document" name="document" type="file" required
+                                                             accept=".pdf, .docx, .doc" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                     
+                                                
                                                 </div>
                                             </div>
+                                
                                         </div>
                                     </div>
 
-                                    <div class="modal-footer">
-                                        <button class="btn btn-default" data-dismiss="modal" type=
-                                        "button">Close</button> <button  class="btn btn-primary"
-                                        name="savephoto" type="submit" id="img-btn">Upload Photo</button>
-                                    </div>
                                 </form>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
+                    </section>
+                </div>
+
+            </div>
+
+            <div id="attachments" class="tab-pane ">
+                <div class="panel panel-default" style="margin-top:6px">
+
+                    <section class="panel-body">
+
+                    </section>
+                </div>
+
+            </div>
+        </div>
+
+        <section style="display:inline;">
+
+            <input type="submit" id="doc-btn" class="btn btn-primary btn-block"
+                   value="Upload Document">
+            </form>
+
+        </section>
+
+    </div>
+
+</div>
+    
+</div>
+</div>

@@ -3,17 +3,19 @@
     Session::start();
 
     if (isset($_POST) && isset($_FILES)) {
-        editImage();
+        attach();
     }
 
-    function editImage()
+    function attach()
     {
-        deleteExistingImage();
-        $img = UploadImage();
+        //deleteExistingImage();
+        $document = UploadDoc();
 
         $contr = new InternContr();
 
-        $results = $contr->uploadImage(Session::get("userVars", "id"), $img);
+        $docName = $_POST['name'];
+
+        $results = $contr->uploadDoc(Session::get("userVars", "id"), $docName, $document);
 
         if($results) {
            echo $results;
@@ -37,14 +39,13 @@
         }
     }
 
-    function UploadImage(){
-            $target_dir = "../../intern/pictures/";
-            $filename = str_replace(' ', '', $_FILES["photo"]["name"]);
+    function UploadDoc(){
+            $target_dir = "../../intern/documents/";
+            $filename = str_replace(' ', '', $_FILES["document"]["name"]);
             $target_file = $target_dir . date("dmYhis") . basename($filename);
-            $uploadOk = 1;
             $fileType = pathinfo($target_file,PATHINFO_EXTENSION);
             
-            if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
+            if (move_uploaded_file($_FILES["document"]["tmp_name"], $target_file)) {
                 return  date("dmYhis") . basename($filename);
             }else{
                 echo "Error Uploading File" . "=> Upload a file less than 2MB";

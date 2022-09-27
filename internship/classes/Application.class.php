@@ -1,17 +1,14 @@
 <?php 
     class Application extends Dbh{
 
-        protected function insert($company_id, $title, $desc, $location, $category, $type,
-         $salary, $duties, $skills, $qualifications, $closing_date, $other_info){
-            $sql = "INSERT INTO vacancies
-                    (employer, title, description, location, field, type, salary,
-                     duties, skills, qualifications, due_date, other_info) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
+        protected function insert($vacancy_id, $applicant_id, $cv){
+            $sql = "INSERT INTO applications
+                    (vacancy, applicant, cv) 
+                    VALUES (?, ?, ?)"; 
    
             $stmt = $this->connect()->prepare($sql);
  
-            if($stmt->execute([$company_id, $title, $desc, $location, $category, $type,
-            $salary, $duties, $skills, $qualifications, $closing_date, $other_info])){
+            if($stmt->execute([$vacancy_id, $applicant_id, $cv])){
                 return true;
             }
  
@@ -35,6 +32,36 @@
             return false;
         }
 
+        protected function getApplication($vacancy_id, $applicant_id){
+            $sql = "SELECT * FROM applications
+                    where vacancy=? and applicant=?";
+
+            $stmt = $this->connect()->prepare($sql);
+
+            $stmt->execute([$vacancy_id, $applicant_id]);
+
+            if($stmt->rowCount() > 0){
+                return $stmt->fetch();
+            }
+
+            return false;
+        }
+
+        protected function getApplicationOnce($id){
+            $sql = "SELECT * FROM applications
+                    where id=?";
+
+            $stmt = $this->connect()->prepare($sql);
+
+            $stmt->execute([$id]);
+
+            if($stmt->rowCount() > 0){
+                return $stmt->fetch();
+            }
+
+            return false;
+        }
+
         protected function getApplicationsFor($applicant_id){
             $sql = "SELECT * FROM applications a
                     Inner Join vacancies v on a.vacancy=v.id
@@ -52,50 +79,21 @@
             return false;
         }
 
-        protected function getJob($id){
-            $sql = "SELECT * FROM vacancies v
-                    Inner Join employer e on e.id=v.employer
-                    where v.id=?";
 
-            $stmt = $this->connect()->prepare($sql);
-            
-            $stmt->execute([$id]);
-
-            if($stmt->rowCount() > 0){
-                return $stmt->fetch(PDO::FETCH_NAMED);
-            }
-
-            return implode(":",$stmt->errorInfo());
-        }
-
-        protected function getAll(){
-            $sql = "SELECT * FROM vacancies Order by id desc";
-            $stmt = $this->connect()->query($sql);
-
-            if($stmt->rowCount() > 0){
-                return $stmt->fetchAll();
-            }
-
-            return false;
-        }
-
-        protected function update($id, $title, $desc, $location, $category, $type,
-        $salary, $duties, $skills, $qualifications, $closing_date, $other_info, $status){
-            $sql = "UPDATE vacancies
-                    SET title=?, description=?, location=?, field=?, type=?, salary=?, duties=?, 
-                        skills=?, qualifications=?, due_date=?, other_info=?, status=? 
-                    WHERE id=?";
+        protected function update($applicant_id, $status){
+            $sql = "UPDATE applications
+                    SET status=?, date_responded=NOW()
+                    WHERE applicant=?";
 
             $stmt = $this->connect()->prepare($sql);
 
-            $stmt->execute([$title, $desc, $location, $category, $type,
-            $salary, $duties, $skills, $qualifications, $closing_date, $other_info, $status, $id]);
+            $stmt->execute([$status, $applicant_id]);
 
             //echo  implode(":",  $stmt->errorInfo() );
         }
 
         protected function delete($id){
-            $sql = "DELETE FROM vacancies WHERE id=?";
+            $sql = "DELETE FROM applications WHERE id=?";
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute([$id]);
             return "Deleting Message => ". implode(":",  $stmt->errorInfo() );

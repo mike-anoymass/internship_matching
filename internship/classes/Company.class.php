@@ -58,8 +58,8 @@
         $sql = "SELECT * from employer";
 
         $stmt = $this->connect()->query($sql);
-
-        if($stmt->rowCount() > 0){
+      
+        if($stmt){
             return $stmt->fetchAll();
         }
         return false;

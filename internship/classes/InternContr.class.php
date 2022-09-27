@@ -8,6 +8,10 @@
 
         public function uploadImage($id, $img){
             parent::uploadImage($id, $img);
-         }
+        }
+
+        public function uploadDoc($id, $name, $document){
+            return parent::uploadDoc($id, $name, $document);
+        }
     }
 ?>
