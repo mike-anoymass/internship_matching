@@ -131,6 +131,11 @@
         # code...
         require_once(__DIR__."/../jobseekers/jobseeker_profile.php");
         break;
+
+    case 'manageapplication':
+        # code...
+        require_once(__DIR__."/../application/view.php");
+        break;
       case 'accounts':
         # code...
         // require_once("accounts.php");

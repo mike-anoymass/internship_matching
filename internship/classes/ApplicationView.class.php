@@ -15,5 +15,9 @@
         public function getApplicationsFor($id){
             return parent::getApplicationsFor($id);
         }
+
+        public function getPendingApplications($company_id){
+            return parent::getPendingApplications($company_id);
+        }
     }
 ?>

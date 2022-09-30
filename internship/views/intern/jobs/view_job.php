@@ -128,6 +128,19 @@
         <div class="col-sm-12 slider">
             <h5>Download your Resume <a href="/internship/views/intern/cvs/<?php echo $applc['cv'] ?>">Here</a></h5>
             <h5>Status: <?php echo $applc['status'] ?></h5>
+            <?php if($applc['status'] == "Accepted") {  
+                $intview = new InterviewView;
+                $interview = $intview->get($applc['id']);
+                ?>
+
+            <h5>
+                Interview to take place on 
+                <?php echo $interview['dateOfInterview'] ?> at <?php echo $interview['time'] ?>
+                <br>
+                <?php echo $interview['remark'] ?>
+            </h5>
+
+            <?php } ?>
             <h5>Delete your application
             <i id="<?php echo $applc['id'] ?>" class="fa fa-trash fa-lg del-application" style="color: red;"></i></h5>
         </div>

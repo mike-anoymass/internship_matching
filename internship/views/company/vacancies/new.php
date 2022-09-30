@@ -126,7 +126,7 @@
                         <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1" required>Closing Date:*</label>
-                                    <input type="text" name="date" class="form-control" required>
+                                    <input type="text" name="date" class="form-control datepicker" required>
                                 </div>
                             </div>
                     </div>

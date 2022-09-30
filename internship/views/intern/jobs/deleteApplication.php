@@ -8,7 +8,7 @@
         $appl = new ApplicationView();
         $application = $appl->getApplicationOnce($id);
 
-        $file_to_delete ='../../intern/cvs/'.$application['cv'];
+        $file_to_delete ='../../intern/cvs/'.$application['cv'][0];
         unlink($file_to_delete);
 
         $contr = new ApplicationContr();

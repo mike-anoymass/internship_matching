@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    $('.datepicker').datepicker({
+        inline: true
+      });
+
     $("#save-vacancy").click(function (e) {
             if ($("#vacancy-data")[0].checkValidity()) {
                 e.preventDefault();
@@ -327,6 +331,86 @@ $(document).ready(function () {
               Swal.fire({
                 icon: 'warning',
                 title:'Delete Cancelled',
+                showConfirmButton: false,
+                timer: 1900
+                })
+            }
+          })
+
+    });
+
+    $("#interview-btn").click(function (e) {
+        if ($("#interview-data")[0].checkValidity()) {
+            e.preventDefault();
+            var data = new FormData($("#interview-data")[0])
+                $.ajax({
+                    url: "application/addInterview.php",
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (response) {
+                      
+                            $("#interview-data")[0].reset();
+                            $('#interview_modal').hide();
+    
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Interview has been scheduled and sent!',
+                                timer: 1900
+                              })
+                              
+                              setTimeout(function(){
+                                location.reload(true);
+                              }, 2000)
+                            
+                    }
+                });
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<code><b>Make Sure you complete filling the form</b></code>'
+              })
+        }
+    });
+
+    $("body").on("click", ".reject-btn", function (e) {
+        e.preventDefault();
+        let delBtnID = $(this).attr('id');
+        Swal.fire({
+            icon: 'warning',
+            title: 'Do you want to Reject this application?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: `No`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "application/reject.php",
+                    type: "POST",
+                    data: {delBtnID:delBtnID},
+                    success: function (response) {
+                        Swal.fire({
+                            icon: 'success',
+                            title:'Rejected!!',
+                            showConfirmButton: false,
+                            timer: 1900
+                            })
+
+                            setTimeout(function (){
+                                location.reload(true);
+                            }, 2000); 
+                    }
+                });
+            } else if (result.isDenied) {
+              Swal.fire({
+                icon: 'warning',
+                title:'Cancelled',
                 showConfirmButton: false,
                 timer: 1900
                 })

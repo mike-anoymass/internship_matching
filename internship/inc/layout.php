@@ -71,8 +71,9 @@
                 
 
                 <?php
-                $notif = "1";
-                $msg = "34"; 
+                $notif = "0";
+
+                $msg = "0"; 
                     if(!Session::get("userVars")){
                         echo '<p   class="pull-right login">
                             <a href="/internship/views/login.php"> <i class="fa fa-lock"></i> Login </a>
@@ -98,6 +99,11 @@
                         if(Session::get("userVars", "type") == "Company"){
                             $comp = new CompanyView();
                             $company = $comp->get(Session::get("userVars", "id"));
+
+                            $applicat = new ApplicationView;
+                            $applications = $applicat->getPendingApplications(Session::get("userVars", "id"));
+
+                            $notif = $applications;
 
                             if($company){
                                 echo ' <p class="pull-right login">

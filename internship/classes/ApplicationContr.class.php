@@ -9,6 +9,10 @@
             parent::update($a_id, $status);
         }
 
+        public function editStatus($id, $status){
+            parent::editStatus($id, $status);
+        }
+
         public function delete($id){
             return parent::delete($id);
         }

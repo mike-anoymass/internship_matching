@@ -46,6 +46,12 @@ switch ($view) {
         $_SESSION['jobs']	='active' ;
         $content ='/../views/company/profile/profile.php';
         break;
+
+    case 'manageapplication' : 
+        $title="Manage Application";	
+        $_SESSION['jobs']	='active' ;
+        $content ='/../views/company/profile/profile.php';
+        break;
 	 
 	default : 
 	    $title="Profile";	

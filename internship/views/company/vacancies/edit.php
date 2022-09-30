@@ -27,7 +27,7 @@
       <form id="vacancy-data">
 					<div class="row mt-3">
 						<div class="col-md-4">
-							<div class="form-group">
+							<div class="form-group">    
 								<label for="exampleInputEmail1">Title of the Post:*</label>
 								<input type="text" name="title" class="form-control"
                                 value="<?php echo $job['title'] ?>" required>
@@ -140,7 +140,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1" required>Closing Date:*</label>
                                     <input type="text" name="date" value="<?php echo $job['due_date']?>"
-                                    class="form-control">
+                                    class="form-control datepicker">
                                 </div>
                         </div>
 

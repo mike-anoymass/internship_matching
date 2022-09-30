@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 27, 2022 at 09:23 PM
+-- Generation Time: Sep 30, 2022 at 12:51 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -56,7 +56,8 @@ INSERT INTO `applicants` (`id`, `firstname`, `lastname`, `gender`, `program`, `g
 (23, 'stella Claire', 'banda', 'Female', 'Business Communication', 2022, 993949494, 'stella@gmail.com', 'i am an experience entreprenuer with atleast 3 years in this field ', '16092022104359REASEARCH PROPOSAL BRITNEY LUNDUKA BIS-17-SS-019.pdf', '2022-09-16 12:43:59', 'not working', '27092022012637149071.png', 'engineering'),
 (56, 'Mirriam ', 'Mhango', 'Female', 'business communication', 2020, 983000041, 'mirrie@gmail.com', 'I am a hardworking young girl. Seeking to grow my career in this field ', '24092022105958meeting invite.pdf', '2022-09-24 12:59:58', 'not working', NULL, 'education'),
 (60, 'mike', 'mhango', 'Male', 'ddkdk', 3373, 888119888, 'mikelibamba@gmail.com', 'ddkdkdk ', '24092022121047REASEARCH PROPOSAL BRITNEY LUNDUKA BIS-17-SS-019.pdf', '2022-09-24 14:10:47', 'not working', NULL, 'commerce'),
-(61, 'Noel', 'Phiri', 'Male', 'mathematical sciences', 2021, 995599595, 'noel@gmail.com', 'I like statistics ', '26092022091526Web-Developer.pdf', '2022-09-26 11:15:26', 'not working', '260920221030123913+2659963520180623_030653.jpg', 'education');
+(61, 'Noel', 'Phiri', 'Male', 'mathematical sciences', 2021, 995599595, 'noel@gmail.com', 'I like statistics ', '26092022091526Web-Developer.pdf', '2022-09-26 11:15:26', 'not working', '260920221030123913+2659963520180623_030653.jpg', 'education'),
+(62, 'Dean', 'Magombo', 'Male', 'BSc in Computing', 2020, 884944949, 'deanmagombo@gmail.com', 'I am self motivated and passionate about my dreams ', '30092022115924meeting invite.pdf', '2022-09-30 13:59:24', 'not working', NULL, 'Information technology');
 
 -- --------------------------------------------------------
 
@@ -76,16 +77,25 @@ CREATE TABLE IF NOT EXISTS `applications` (
   PRIMARY KEY (`id`),
   KEY `application_to_student` (`applicant`),
   KEY `app_to_vacancy` (`vacancy`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `applications`
 --
 
 INSERT INTO `applications` (`id`, `vacancy`, `applicant`, `date`, `status`, `cv`, `date_responded`) VALUES
-(9, 5, 61, '2022-09-27 21:37:32', 'Pending', '27092022073732datadictionary.pdf', NULL),
-(10, 5, 23, '2022-09-27 23:01:05', 'Pending', '27092022090105Web-Developer.pdf', NULL),
-(12, 9, 61, '2022-09-27 23:16:26', 'Pending', '27092022091626meetinginvite.pdf', NULL);
+(9, 5, 61, '2022-09-27 21:37:32', 'Accepted', '27092022073732datadictionary.pdf', '2022-09-30 13:12:38'),
+(10, 5, 23, '2022-09-27 23:01:05', 'Accepted', '27092022090105Web-Developer.pdf', '2022-09-30 13:15:25'),
+(12, 9, 61, '2022-09-27 23:16:26', 'Accepted', '27092022091626meetinginvite.pdf', '2022-09-29 23:43:42'),
+(13, 11, 23, '2022-09-29 09:50:29', 'Rejected', '29092022075029CVwaterboard.pdf', '2022-09-30 00:22:06'),
+(14, 7, 56, '2022-09-30 13:21:41', 'Accepted', '30092022112141Web-Developer.pdf', '2022-09-30 13:22:23'),
+(15, 9, 56, '2022-09-30 13:47:16', 'Accepted', '30092022114716meetinginvite.pdf', '2022-09-30 13:50:53'),
+(16, 10, 56, '2022-09-30 13:54:04', 'Accepted', '30092022115404meetinginvite.pdf', '2022-09-30 13:55:29'),
+(17, 9, 62, '2022-09-30 14:00:05', 'Accepted', '30092022120005Web-Developer.pdf', '2022-09-30 14:01:14'),
+(19, 10, 62, '2022-09-30 14:07:47', 'Accepted', '30092022120747meetinginvite.pdf', '2022-09-30 14:08:43'),
+(20, 7, 61, '2022-09-30 14:14:42', 'Accepted', '30092022121442Web-Developer.pdf', '2022-09-30 14:15:23'),
+(21, 10, 21, '2022-09-30 14:38:33', 'Pending', '30092022123833meetinginvite.pdf', NULL),
+(22, 9, 21, '2022-09-30 14:41:46', 'Pending', '30092022124146meetinginvite.pdf', NULL);
 
 -- --------------------------------------------------------
 
@@ -102,14 +112,18 @@ CREATE TABLE IF NOT EXISTS `attachments` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `attachment_applicant` (`applicant`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `attachments`
 --
 
 INSERT INTO `attachments` (`id`, `name`, `document`, `applicant`, `date`) VALUES
-(18, 'degree', '27092022073548Web-Developer.pdf', 61, '2022-09-27 21:35:48');
+(18, 'degree', '27092022073548Web-Developer.pdf', 61, '2022-09-27 21:35:48'),
+(19, 'Academic Transcript', '29092022074802AcademicTranscript_MikeMLibamba.pdf', 23, '2022-09-29 09:48:02'),
+(20, 'Bachelors Degree', '29092022074825Degree_MikeMLibamba.pdf', 23, '2022-09-29 09:48:25'),
+(21, 'MSCE Certificate', '29092022074904MSCECertificate_MikeMLibamba.pdf', 23, '2022-09-29 09:49:04'),
+(22, 'National ID', '29092022074920nationalID_MikeMLibamba.pdf', 23, '2022-09-29 09:49:20');
 
 -- --------------------------------------------------------
 
@@ -174,11 +188,32 @@ DROP TABLE IF EXISTS `interviews`;
 CREATE TABLE IF NOT EXISTS `interviews` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `application` int(11) NOT NULL,
-  `dateOfInterview` date NOT NULL,
-  `time` time NOT NULL,
+  `dateOfInterview` varchar(30) NOT NULL,
+  `time` varchar(20) NOT NULL,
+  `remark` text,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `interviiew_to_app` (`application`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `interviews`
+--
+
+INSERT INTO `interviews` (`id`, `application`, `dateOfInterview`, `time`, `remark`, `date`) VALUES
+(1, 12, '12/12/12', '12:12pm', 'location: lilongwe', '2022-09-29 23:33:36'),
+(2, 12, '13/12/12', '2pm', 'location: BTZ', '2022-09-29 23:43:42'),
+(3, 9, '121212', '12pm', 'kaya man', '2022-09-30 13:12:27'),
+(4, 9, '121212', '12pm', 'kaya man', '2022-09-30 13:12:33'),
+(5, 9, '121212', '12pm', 'kaya man', '2022-09-30 13:12:38'),
+(6, 10, '14/12/2002', '1pm', 'location lilongwe', '2022-09-30 13:15:25'),
+(7, 14, '25/10/2022', '4pm', 'nothing', '2022-09-30 13:22:23'),
+(8, 15, '30/11/2022', '10am', 'Location of the interview is in Lilongwe Gemini House', '2022-09-30 13:48:37'),
+(9, 15, '30/11/2022', '10am', 'Location of the interview is in Lilongwe Gemini House', '2022-09-30 13:50:53'),
+(10, 16, '30/12/2022', '2pm', 'Location: Lilongwe, Area 47 offices', '2022-09-30 13:55:28'),
+(11, 17, '12/11/2022', '1pm', 'Location: lilongwe, Area 47 offices', '2022-09-30 14:01:14'),
+(13, 19, '12/11/2022', '1pm', 'Location: lilongwe, Area 47 offices', '2022-09-30 14:08:43'),
+(14, 20, '12/11/2022', '1pm', 'kaya', '2022-09-30 14:15:23');
 
 -- --------------------------------------------------------
 
@@ -212,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `type` varchar(30) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -226,7 +261,8 @@ INSERT INTO `users` (`id`, `email`, `password`, `type`) VALUES
 (55, 'nico@nico.com', '1234', 'Company'),
 (56, 'mirrie@gmail.com', '1234', 'Applicant'),
 (60, 'mikelibamba@gmail.com', '123', 'Applicant'),
-(61, 'noel@gmail.com', '1234', 'Applicant');
+(61, 'noel@gmail.com', '1234', 'Applicant'),
+(62, 'deanmagombo@gmail.com', '1234', 'Applicant');
 
 -- --------------------------------------------------------
 
@@ -248,7 +284,7 @@ CREATE TABLE IF NOT EXISTS `vacancies` (
   `qualifications` text NOT NULL,
   `salary` int(11) DEFAULT '0',
   `other_info` text,
-  `due_date` date NOT NULL,
+  `due_date` varchar(30) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` varchar(20) NOT NULL DEFAULT 'Open',
   `positions` int(4) NOT NULL DEFAULT '1',
@@ -265,9 +301,9 @@ INSERT INTO `vacancies` (`id`, `employer`, `title`, `field`, `type`, `location`,
 (5, 11, 'civil engineer', 'engineering', 'Full Time', 'lilongwe', 'to build houses and stores', 'build and measure', 'build', 'degree', 150000, 'none\r\n', '2012-12-12', '2022-09-19 09:58:44', 'Open', 0),
 (7, 11, 'electric engineer', 'engineering', 'Full Time', 'lilongwe', 'check circuits', 'check cables \r\nand circuits', 'electronics', 'degree', 150000, '', '2012-12-12', '2022-09-19 11:20:11', 'Open', 0),
 (8, 11, 'gredar driver', 'engineering', 'Full Time', 'lilongwe', 'to drive vehicles', 'to drive', 'vehicles', 'diploma', 100000, 'none', '2010-10-10', '2022-09-19 12:12:58', 'Closed', 0),
-(9, 10, 'Java Developer ', 'Information technology', 'Full Time', 'lilongwe', 'to develop fast and secure java applications for both mobile and desktop', '- collect user requirements \r\n- analyze user requirements \r\n- design database and interfaces\r\n- implement systems in java ', '- JavaFx\r\n- MySql\r\n- Java Score\r\n- SQLite', 'Degree in computing', 200000, '', '2010-10-22', '2022-09-19 17:59:00', 'Open', 1),
+(9, 10, 'Java Developer ', 'Information technology', 'Full Time', 'lilongwe', 'to develop fast and secure java applications for both mobile and desktop', '- collect user requirements \r\n- analyze user requirements \r\n- design database and interfaces\r\n- implement systems in java ', '- JavaFx\r\n- MySql\r\n- Java Score\r\n- SQLite', 'Degree in computing', 200000, '', '09/07/2022', '2022-09-19 17:59:00', 'Open', 1),
 (10, 10, 'Systems Analyst', 'Information technology', 'Full Time', 'BT', 'to analyse our tailored systems', 'to analyse systems', 'systems analysis', 'degree in IS', 200000, '', '2011-11-11', '2022-09-20 14:36:05', 'Open', 4),
-(11, 11, 'field engineer', 'engineering', 'Full Time', 'lilongwe', 'to guide people', 'none', 'none', 'none', 0, 'none', '2012-12-12', '2022-09-21 11:01:49', 'Open', 2);
+(11, 11, 'field engineer', 'engineering', 'Full Time', 'lilongwe', 'to guide people', 'none', 'none', 'none', 0, 'none', '2012-12-12', '2022-09-21 11:01:49', 'Closed', 2);
 
 --
 -- Constraints for dumped tables

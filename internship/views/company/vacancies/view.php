@@ -131,7 +131,9 @@
                     <tr>
                       <th>Name</th>
                       <th>Status</th>
+                      <th>Resume</th>
                       <th>Date Applied</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -145,7 +147,14 @@
                             '.$application['firstname'].' '.$application['lastname'].'
                             </a></td>';
                           echo '<td class="mailbox-attachment">'.$application['status'][0].'</td>';
+                          echo '<td class="mailbox-attachment"><a href="/internship/views/intern/cvs/'.$application['cv'][0].'">'
+                          .$application['cv'][0].
+                          '</a></td>';
                           echo '<td class="mailbox-attachment">'.$application['date'][0].'</td>';
+                          echo '<td class="mailbox-attachment">
+                          <a href="/internship/views/company/index.php?view=manageapplication&id='.$application['id'][0].'">
+                          Manage
+                          </a></td>';
                           echo '</a>';
                           echo '</tr>';
                       } 
@@ -171,19 +180,6 @@
   </div> 
 
 <?php } elseif(Session::get("userVars", 'type') == "Applicant") {?>
-    <div class="col-sm-12 content-footer">
-<p><i class="fa fa-paperclip"></i>  Attachment Files</p>
-	<div class="col-sm-12 slider">
-		 <h3>Download Resume <a href="<?php echo web_root.'applicant/'.$attachmentfile->FILE_LOCATION; ?>">Here</a></h3>
-	</div>  
-	<div class="col-sm-12">
-		<p>Feedback</p>
-		<p><?php echo isset($jobreg->REMARKS) ? $jobreg->REMARKS : ""; ?></p>
-	</div>
-	<div class="col-sm-12  submitbutton "> 
-		<a href="index.php?view=appliedjobs" class="btn btn-primary fa fa-arrow-left">Back</a>
-	</div> 
-</div>
 <?php } ?>
  
 
