@@ -24,6 +24,23 @@
             }
        }
 
+       protected function update($id, $name, $owner, $profile, $phone, $cEmail, $address, $lEmail, $password, $type){
+            $sql = "UPDATE employer 
+                    SET name = ?, owner=?, profile=?, phone=?, email=?, postal_address=?
+                    WHERE id=?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$name, $owner, $profile, $phone, $cEmail, $address, $id]);
+
+            $sql = "UPDATE users 
+                    SET email = ?, password=?
+                    WHERE id=?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$lEmail, $password, $id]);
+            
+            return true;
+            
+       }
+
        function insertUser($lEmail, $password, $type){
             $sql = "INSERT INTO users
                     (email, password, type) 

@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    var theValue = $('#gender').val();
+    $('option[value=' + theValue + ']')
+            .attr('selected',true);
+
     $('.datepicker').datepicker({
         inline: true
       });
@@ -418,5 +422,202 @@ $(document).ready(function () {
           })
 
     });
+
+    $("#message-btn").click(function (e) {
+        if ($("#message-data")[0].checkValidity()) {
+            e.preventDefault();
+                $.ajax({
+                    url: "notifications/messageAction.php",
+                    type: "POST",
+                    data: $("#message-data").serialize() + "&action=create",
+                    success: function (response) {
+                        if(response === "1"){
+                            $("#message-data")[0].reset();
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Message has been sent',
+                                showConfirmButton: false,
+                                timer: 1900
+                            })
+                            setTimeout(function (){
+                                location = "index.php?view=messages";
+                            }, 2000);
+                            
+                        }else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong!',
+                                footer: response
+                            })
+                        }
+                        
+                    }
+                });
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<code>Make Sure you complete filling the form</code>'
+              })
+        }
+});
+
+$("body").on("click", ".delete-message", function (e) {
+    e.preventDefault();
+    let delBtnID = $(this).attr('id');
+
+    Swal.fire({
+        icon: 'warning',
+        title: 'Do you want to delete this message?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: `No`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "notifications/delete_message.php",
+                type: "POST",
+                data: {delBtnID:delBtnID},
+                success: function (response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title:'Delete Successful',
+                        showConfirmButton: false,
+                        timer: 1900
+                        })
+
+                        setTimeout(function (){
+                            location.reload(true);
+                        }, 2000); 
+                }
+            });
+        } else if (result.isDenied) {
+          Swal.fire({
+            icon: 'warning',
+            title:'Delete Cancelled',
+            showConfirmButton: false,
+            timer: 1900
+            })
+        }
+      })
+
+});
+
+
+$("#account-update").click(function (e) {
+    if ($("#company-data")[0].checkValidity()) {
+        e.preventDefault();
+        if($("#password").val() === $("#password2").val()){
+            $.ajax({
+                url: "account/updateAction.php",
+                type: "POST",
+                data: $("#company-data").serialize() + "&action=create",
+                success: function (response) {
+                    if(response === "1"){
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'Account has been updated',
+                            showConfirmButton: false,
+                            timer: 1900
+                        })
+                        setTimeout(function (){
+                            location.reload(true);
+                        }, 2000);
+                        
+                    }else{
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!',
+                            footer: response
+                        })
+                    }
+                    
+                }
+            });
+
+        }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<code>Passwords do not match</code>'
+                })
+        }
+    }else{
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            footer: '<code>Make Sure you complete filling the form</code>'
+          })
+    }
+});
+
+$("#applicant-update").click(function (e) {
+    if ($("#intern-data")[0].checkValidity()) {
+        e.preventDefault();
+
+        var data = new FormData($("#intern-data")[0])
+
+        if($("#password").val() === $("#password2").val()){
+            $.ajax({
+                url: "account/update.php",
+                type: "POST",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (response) {
+                    if(response === "1"){
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'Account is up to date',
+                            showConfirmButton: false,
+                            timer: 1900
+                        })
+                        setTimeout(function (){
+                            location.reload(true)
+                        }, 2000);
+                        //$("#intern-data")[0].reset();
+                        
+                    }else{
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!',
+                            footer: response
+                        })
+                    }
+                    
+                   
+                    
+                }
+            });
+
+        }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<code>Passwords do not match</code>'
+                })
+        }
+    }else{
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            footer: '<code>Make Sure you complete filling the form</code>'
+          })
+    }
+});
+
 
 });

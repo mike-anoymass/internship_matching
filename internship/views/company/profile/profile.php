@@ -63,13 +63,20 @@
                     </a>
                 </li>
                
-                <li class="<?php echo ($view=='message') ? 'active': '';?>"><a href="<?php //echo web_root.'applicant/index.php?view=message'; ?>"><i class="fa fa-envelope-o"></i> Messages
-                  <span class="label label-success pull-right"><?php echo isset($showMsg->COUNT) ? $showMsg->COUNT : 0;?></span></a></li>
-              <li class="<?php //echo ($view=='notification') ? 'active': '';?>"><a href="<?php //echo web_root.'applicant/index.php?view=notification'; ?>"><i class="fa fa-bell-o"></i> Notification
-                  <span class="label label-success pull-right"><?php //echo $notif; ?></span></a></li> 
+                <li class="<?php echo ($view=='messages') ? 'active': '';?>">
+                <a href="/internship/views/company/index.php?view=messages">
+                    <i class="fa fa-envelope-o"></i> Messages
+                </a>
+                </li>
+              <li class="<?php echo ($view=='notification') ? 'active': '';?>">
+                <a href="/internship/views/company/index.php?view=notification">
+                 <i class="fa fa-bell-o"></i> Notification
+                  <span class="label label-success pull-right"><?php echo $notif; ?></span>
+                </a>
+              </li> 
 
-                  <li class="<?php echo ($view=='accounts') ? 'active': '';?>">
-                  <a href="<?php //echo web_root.'applicant/index.php?view=accounts'; ?>">
+                  <li class="<?php echo ($view=='account') ? 'active': '';?>">
+                  <a href="/internship/views/company/index.php?view=account">
                   <i class="fa fa-user"></i> Account </a>
                 </li>
               </ul>
@@ -136,9 +143,21 @@
         # code...
         require_once(__DIR__."/../application/view.php");
         break;
-      case 'accounts':
+
+    case 'notification':
         # code...
-        // require_once("accounts.php");
+        require_once(__DIR__."/../notifications/view.php");
+        break;
+
+    case 'messages':
+        # code...
+        require_once(__DIR__."/../notifications/messages.php");
+        break;
+    
+
+      case 'account':
+        # code...
+        require_once(__DIR__."/../account/view.php");
         break;
       
       default:

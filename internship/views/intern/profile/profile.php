@@ -78,21 +78,15 @@
                         <?php echo '<a href="/internship/index.php?q=hiring&applicant='.$applicant['id'].'">   
                             <i class="fa fa-building"></i> Suggested for You </a>'?>
                   </li>
-                  <li class="<?php echo ($view=='accounts') ? 'active': '';?>">
-                    <a href="<?php //echo web_root.'applicant/index.php?view=accounts'; ?>">
-                    <i class="fa fa-user"></i> Accounts </a>
-                  </li>
-
                 <li class="<?php echo ($view=='message') ? 'active': '';?>">
                     <a href="<?php //echo web_root.'applicant/index.php?view=message'; ?>">
                     <i class="fa fa-envelope-o"></i> Messages
                   <span class="label label-success pull-right">
                     <?php echo isset($showMsg->COUNT) ? $showMsg->COUNT : 0;?></span></a></li>
-              <li class="<?php //echo ($view=='notification') ? 'active': '';?>">
-                <a href="<?php //echo web_root.'applicant/index.php?view=notification'; ?>">
-                <i class="fa fa-bell-o"></i> Notification
-                  <span class="label label-success pull-right"><?php //echo $notif; ?></span></a>
-                </li> 
+                    <li class="<?php echo ($view=='account') ? 'active': '';?>">
+                    <a href="/internship/views/intern/index.php?view=account">
+                    <i class="fa fa-user"></i> Account </a>
+                  </li>
               </ul>
                
             </div>
@@ -139,9 +133,10 @@
         # code...
         require_once(__DIR__."/../jobs/appliedjobs.php");
         break;
-      case 'accounts':
+        
+    case 'account':
         # code...
-        // require_once("accounts.php");
+        require_once(__DIR__."/../account/view.php");
         break;
       
       default:

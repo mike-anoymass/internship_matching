@@ -127,6 +127,33 @@
             $stmt->execute([$id]);
         }
 
+        protected function update($id, $fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
+        $email, $passwd, $cv){
+          
+            $sql = "UPDATE applicants SET
+                firstname=?, lastname=?, gender=? , phone=?, program=?, graduation_year=?, 
+                    about=?, email=?, field=?, cv=?
+                WHERE id=?"; 
+
+            $stmt = $this->connect()->prepare($sql);
+
+            $stmt->execute([$fname, $lname, $gender, $phone, $prg, $year, $bio, $email,
+            $category, $cv, $id]);
+
+            //echo implode(":", $stmt->errorInfo());
+
+            $sql = "UPDATE users SET
+                email=?, password=?
+                WHERE id=?"; 
+
+            $stmt = $this->connect()->prepare($sql);
+
+            $stmt->execute([$email, $passwd, $id]);
+
+            return true;
+
+        }
+
         
     }
 ?>

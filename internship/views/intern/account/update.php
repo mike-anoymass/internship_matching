@@ -1,14 +1,14 @@
 <?php
     require_once "classAutoload.php";
 
-    if (isset($_POST) && isset($_FILES)) {
-        insert();
+    if (isset($_POST)) {
+        update();
     }
 
-    function insert()
+    function update()
     {
         
-        global $fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
+        global $id, $fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
         $email, $passwd, $cv;
 
         //to initialize the objects used to inserting data and
@@ -18,7 +18,7 @@
         global $contr;
 
         if($cv != "error"){
-            $results = $contr->insert($fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
+            $results = $contr->update($id, $fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
             $email, $passwd, $cv);
             
             if($results) {
@@ -36,7 +36,7 @@
     }
 
     function initializeVars(){
-        global $fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
+        global $id, $fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
         $email, $passwd, $cv;
 
         //this objects will be used to insert and update user data
@@ -44,6 +44,7 @@
         $contr = new InternContr();
 
         //These literal variables wll be used get data from the insert and update form
+        $id = $_POST['id'];
         $fname = $_POST['first_name'];
          $lname =  $_POST['last_name'];
          $gender = $_POST['gender'];
@@ -55,7 +56,15 @@
               $type = $_POST['type'];
               $email = $_POST['email'];
               $passwd = $_POST['password'];
-              $cv = UploadDoc();
+            
+              if($_FILES["resume"]["error"] != 4){
+                $file_to_delete ='../../intern/cvs/'.$_POST['cv_path'];
+                unlink($file_to_delete);
+                $cv = UploadDoc();
+              }else{
+                $cv = $_POST['cv_path'];
+              }
+              
     }
 
     function UploadDoc(){

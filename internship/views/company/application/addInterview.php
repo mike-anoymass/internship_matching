@@ -68,8 +68,8 @@
             $mail->Password = 'sfhvkciduaefluct'; // YOUR gmail password
 
             // Sender and recipient settings
-            $mail->setFrom($application['email'][1], $application['firstname'] .' '. $application['lastname']);
-            $mail->addAddress($application['email'][0], 'Mike Mhango');
+            $mail->setFrom($application['email'][1], $application['name']);
+            $mail->addAddress($application['email'][0], $application['firstname'] .' '. $application['lastname']);
             $mail->addReplyTo($application['email'][1], $application['name']); // to set the reply to
 
             // Setting the email content

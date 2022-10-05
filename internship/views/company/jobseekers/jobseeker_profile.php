@@ -33,7 +33,9 @@
             <h5 class="my-3"><?php echo $applicant['firstname'].' '. $applicant["lastname"] ;?></h5>
             <p class="text-muted mb-1"><?php echo $applicant['about']; ?></p>
             <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+              <button type="button" class="btn btn-outline-primary ms-1" data-target="#messagemodal"  data-toggle="modal">
+                Message
+            </button>
             </div>
           </div>
 
@@ -188,5 +190,53 @@
 <?php }else{
         echo "record not found";
     }
-
 ?>
+
+
+
+<div class="modal" id="messagemodal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                    <span type="button" class="close fa fa-close" data-dismiss="modal"></span>
+                    <h4>Compose Message</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default" style="margin-top:6px">
+                
+                    <section class="panel-body">
+                        <form id="message-data">
+
+                            <div class="row mt-3">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="exampleInputEmail1">Subject: </label>
+										<input type="text" class="form-control" name="subject"
+                                         id="subject" required>
+									</div>
+								</div>
+
+                            </div>
+                            <div class="row mt-3">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="exampleInputPassword1">Message Body:</label>
+										<textarea class="form-control"
+                                        id="body" name="body" required></textarea>
+									</div>
+								</div>
+							</div>
+
+                            <input type="hidden" value="<?php echo $applicant['id'] ?>" name="applicant">
+
+                            <button type="submit" id="message-btn" class="btn btn-primary btn-block">
+                               <i class="fa fa-send"></i> Send
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </div>
+    </div>
+
+</div>
+</div>

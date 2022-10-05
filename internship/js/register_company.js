@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-
-    //insert Course ajax requests
     $("#btn-save").click(function (e) {
             if ($("#company-data")[0].checkValidity()) {
                 e.preventDefault();

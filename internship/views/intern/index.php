@@ -33,6 +33,11 @@ switch ($view) {
         $title="Vacancy Details";	
         $content ='/../views/intern/profile/profile.php';
         break;
+
+    case 'account' : 
+        $title="Update your account";	
+        $content ='/../views/intern/profile/profile.php';
+        break;
 	 
 	default : 
 	    $title="Applied Jobs";	

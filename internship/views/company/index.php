@@ -52,6 +52,24 @@ switch ($view) {
         $_SESSION['jobs']	='active' ;
         $content ='/../views/company/profile/profile.php';
         break;
+
+    case 'notification' : 
+        $title="Notifications";	
+        $_SESSION['notification']	='active' ;
+        $content ='/../views/company/profile/profile.php';
+        break;
+
+    case 'messages' : 
+        $title="Inbox";	
+        $_SESSION['messages']	='active' ;
+        $content ='/../views/company/profile/profile.php';
+        break;
+
+    case 'account' : 
+        $title="Your Account";	
+        $_SESSION['account'] ='active' ;
+        $content ='/../views/company/profile/profile.php';
+        break;
 	 
 	default : 
 	    $title="Profile";	

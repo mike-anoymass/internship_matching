@@ -17,5 +17,11 @@
         public function deleteAttachment($id){
             parent::deleteAttachment($id);
         }
+
+        public function update($id, $fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
+        $email, $passwd, $cv){
+            return parent::update($id, $fname, $lname, $gender, $phone, $prg, $year, $category, $bio, $type,
+            $email, $passwd, $cv);
+        }
     }
 ?>
